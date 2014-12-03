@@ -1,0 +1,163 @@
+% Klassifiziert den Dokumenten-Typ
+% Doku: http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/
+% Farben: http://www.tu-darmstadt.de/media/medien_stabsstelle_km/services/medien_cd/das_bild_der_tu_darmstadt.pdf
+%  bigchapter: Chapter haben doppelte Schriftgröße
+%  linedtoc: Linien im Inhaltsverzeichnis wie bei Überschriften
+%  colorbacktitle: Der Dokumenten-Titel wird mir der Accentfarbe hinterlegt
+\documentclass[bigchapter,colorback,accentcolor=tud4b,linedtoc,11pt]{tudreport}
+
+% Input Dokument hat das Encoding UTF-8
+\usepackage[utf8]{inputenc}
+% Wichtiges Paket für Links und verlinktes Inhaltsverzeichnis
+\usepackage[ngerman]{hyperref}
+% Paket für Fußnoten
+\usepackage[stable]{footmisc}
+% Paket für amsmath (aligned mathe formeln)
+\usepackage{amsmath}
+% Paket für Bibliotheks-Verzeichnis, square: Verwende eckige statt runde klammern
+% \usepackage[square]{natbib}
+% Paket zum Plotten von Datensätzen
+\usepackage{pgfplots}
+\pgfkeys{
+  /pgfplots/PolarStyle/.style={
+    ylabel=Leistung in W,
+    width=0.33\linewidth,
+    height=0.33\linewidth,
+    scale only axis,
+    grid=both,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=2,
+    minor y tick num=1
+  }
+}
+
+\usetikzlibrary{pgfplots.polar}
+% Verwende deutsche Bezeichner für Inhaltsverzeichnis, ... (ngerman = New German: neue Rechtschreibung)
+\usepackage{ngerman}
+% Deutsche Zahlen (entfernt z.B. das Leerzeichen nach einem Dezimal-Komma)
+\usepackage{ziffer} 
+
+\usepackage[verbose]{placeins}
+
+%wegen Grafikverschiebung hinzugefügt
+\usepackage{float}
+
+%\usepackage{graphicx}
+%\usepackage{caption}
+\usepackage{subcaption} %Für subfigures
+
+% PDF-Optionen
+\hypersetup{
+  pdftitle={TU Darmstadt \- Physikalisches Praktikum für Fortgeschrittene},
+  pdfauthor={Esra Bauer und Sören Link},
+  pdfsubject={Versuch 3.3-B},
+  pdfview=FitH,
+}
+% Nummeriere formeln in Subsections einzeln
+% Kleines makro zur assymetrischen Fehlerangabe
+
+% Entspricht-Zeichen
+\usepackage{scalerel}
+
+\newcommand\equalhat{%
+\let\savearraystretch\arraystretch
+\renewcommand\arraystretch{0.3}
+\begin{array}{c}
+\stretchto{
+    \scalerel*[\widthof{=}]{\wedge}
+    {\rule{1ex}{3ex}}%
+}{0.5ex}\\ 
+=%
+\end{array}
+\let\arraystretch\savearraystretch
+}
+%BEGINN TITELSEITE
+
+\title{Polarisationsanalyse von Licht mittels Stokes-Formalismus}
+
+\subtitle{Esra Bauer  \\Sören Link}
+
+\subsubtitle{Betreuer: David Rupp \hfill Versuchsdatum: 10. November 2014}
+
+\author{Esra Bauer, Sören Link}
+
+%\settitlepicture{img/title.jpg}
+
+\institution{Physikalisches Praktikum \\für Fortgeschrittene \\ Versuch 3.3-B}
+
+\date{\today}
+
+
+%ENDE TITELSEITE
+
+\begin{document}
+%ANFANG DOKUMENT
+
+%Titelseite einfügen
+\maketitle
+
+%Inhaltsverzeichnis einfügen
+\tableofcontents
+
+%ANFANG INHALT
+
+\chapter{Einleitung}
+TODO: Einleitung zur Röntgenkleinwinkelstreuung
+
+\chapter{Grundlagen}
+\section{Polymere}
+TODO: Grundlagen Polymere (langkettig etc.)
+
+\section{Glasübergang}
+TODO: Glasübergang vs. Kristallisation
+
+\section{Kristallinität in Polymeren}
+TODO: Warum kristallisieren polymere? Keimbildung, Teilkristallinität, $F = U - TS$ (Van der Vaals-Kräfte), Sphärolite, warum keine vollständige Kristallisation?
+
+\section{Rötgenstreuung}
+TODO: Funktionsweie Röntgenröhren, Peaks, Streuung (Amplitude, Intensität, Furier, Autokorrelationsunfktion, Elektronendichte)
+
+
+\section{Streuung an zweiphasigen Schichtsystemen}
+TODO: Autokorrelationsfunktion, Invariante Q, Herleitung (wie in vorbesprechung), Abweichung Tatsächliche Korrelationsfunktion von einer für ein idealisiertes System
+
+
+\chapter{Durchführung}
+\section{Präparation der PET-Probe}
+TODO: Vorgehen, eingestellte Temperatur (idealerweie knapp unter 300°C), gemachte Fehler (zu viel PET "Rohmaterial"`, zu hohe Temperatur -> verfärbung)
+
+\section{Bestimmung des Primärstrahlprofils}
+TODO: Vorgehen, einstellungen, Warum? (Entschlierung)
+
+\section{Hintergrundmessung mit leerem Probenhalter und Aluminiumfolie}
+TODO: Vorgehen (moving slit), Aufbaue (leere Probenhalter, Alufolie)
+
+\section{Messungen mit Probe}
+TODO: Messreihenfolge (Primärstrahlmessung(PS) -> Wanderspalt (WS) -> PS -> WS -> \dots; 170grad -> \dots)
+
+\chapter{Auswertung}
+\section{Strahlcharakterisierung}
+TODO: Darstellung des Primärstrahls
+
+\section{PET-Streudaten}
+TODO: Rohdaten, Entschmierung, Intensität vs. Streuvektor, Langperiode abschätzen
+
+\section{Eindimensionale Korrelationsfunkton}
+TODO: Berechnung/Darstellung von K(Z), Kristallinität, Langperiode, Kristallicke, Zusammenhang mit Temperatur, Vergleich mit Theorie
+
+\chapter{Fazit}
+TODO: Fazit, mögliche Verbesserungen (Herstellung der Probe?)
+
+%ENDE INHALT
+\cleardoublepage{}
+% Eintrag fürs Inhaltsverzeichnis
+\newpage
+\begin{thebibliography}{100}
+  \bibitem{GefahrenLaser} \url{http://de.wikipedia.org/w/index.php?title=Laser&oldid=128632514#Gefahren}
+\end{thebibliography}
+
+\cleardoublepage{}
+% Eintrag fürs Inhaltsverzeichnis
+% Abbildungsverzeichnis einfügen
+\end{document}
