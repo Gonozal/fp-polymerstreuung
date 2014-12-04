@@ -126,7 +126,7 @@ TODO: Autokorrelationsfunktion, Invariante Q, Herleitung (wie in vorbesprechung)
 \chapter{Durchführung}
 \section{Präparation der PET-Probe}
 
-Bei dem Material, welches in diesem Versuch untersucht wird, handelt es sich um Polyethylenterephtalat (PET), welches man in Form von Getränkeflaschen kennt und auch für die Herstellung von Folien und Fasern verwendet wird. Wir bedienen uns einer handelsüblichen PET-Flasche und schneiden kleine Stücke passend für den Probenhalter aus. Der Probenhalter ist ein längs geteiler Messingzylinder, in dessen Mitte ein längliches Messingplättchen mit rechteckiger Aussparung verschraubt wird. In dieser Aussparung fixieren und schmelzen/kristallisieren wir unsere Probe. Zur Fixierung dient Aluminiumfolie, die einmal um das Plättchen herumgelegt wird, nachdem das PET-Rohmaterial eingelegt worden ist. Nun legen wir das Plättchen auf eine Kochplatte und lassen es einige Zeit bei knapp unter 300 $^{\circ}$C schmelzen. Anschließend kommt die Probe für 10 Minuten (per Stoppuhr genau überprüft) bei 170 $^{\circ}$C in einen Ofen, um sie kristallisieren zu lassen. Nach Ablauf der 10 Minuten wird sie in kaltem Wasser abgeschreckt und ist nun nach Abtrocknung zur Messung bereit. 
+Bei dem Material, welches in diesem Versuch untersucht wird, handelt es sich um Polyethylenterephtalat (PET), welches man in Form von Getränkeflaschen kennt und auch für die Herstellung von Folien und Fasern verwendet wird. Wir bedienen uns einer handelsüblichen PET-Flasche und schneiden kleine Stücke passend für den Probenhalter aus. Der Probenhalter ist ein längs geteiler Messingzylinder, in dessen Mitte ein längliches Messingplättchen einer Stärke von 1 mm mit rechteckiger Aussparung verschraubt wird. In dieser Aussparung fixieren und schmelzen/kristallisieren wir unsere Probe. Zur Fixierung dient Aluminiumfolie, die einmal um das Plättchen herumgelegt wird, nachdem das PET-Rohmaterial eingelegt worden ist. Nun legen wir das Plättchen auf eine Kochplatte und lassen es einige Zeit bei knapp unter 300 $^{\circ}$C schmelzen. Anschließend kommt die Probe für 10 Minuten (per Stoppuhr genau überprüft) bei 170 $^{\circ}$C in einen Ofen, um sie kristallisieren zu lassen. Nach Ablauf der 10 Minuten wird sie in kaltem Wasser abgeschreckt und ist nun nach Abtrocknung zur Messung bereit. 
 
 Bei der Schmelze ist zu beachten, dass das PET verläuft und man deswegen die Menge nicht zu reichlich bemessen sollte, da es sonst aus der Aussparung überläuft, was in der Tat auch beinahe geschehen ist. Zudem hat sich gegen Ende der Schmelze eine bräunliche Verfärbung eingestellt, was zwei Gründe haben kann; zum einen hat der Schmelzvorgang deutlich länger angedauert als im Anleitungsblatt empfohlen, zum andern ist die Temperatur teilweise knapp über 300 Grad angestiegen. Zur Schmelzdauer ist zu sagen, dass die im Anleitungsblatt empfohlenen 5 Minuten etwas knapp bemessen sind, da die Wärmeleitung zwischen der Heizplatte und dem Probenhalter dazu nicht ausreicht, allerdings hat die tatsächliche Schmelze etwa 45 Minuten angedauert, was vermutlich wiederum zu lang ist (ideal sollten ca. 15-20 Minuten sein). Um die Temperatur konstant zu halten, ist es außerdem erforderlich, die Heizleistung der Platte nachzuregeln, u.a. wohl deswegen, weil zur Fixierung des Temperatursensors ein Ziegelstein auf der Platte liegt, der sich erst nach und nach aufheizt und zu Anfang deshalb mehr Heizleistung aufnimmt. Selbiges gilt auch für die übrigen Materialien, die mit aufgeheizt werden (metallene Heizplatte, Probenhalter usw.).
 
@@ -135,7 +135,37 @@ TODO: Vorgehen, einstellungen, Warum? (Entschlierung)
 
 Vor Beginn der eigentlichem Messung ist es notwendig, die Intensitätsverteilung des Primärstrahls zu bestimmen, da die Strichkollimation zwar den Vorteil der generell höheren Intensität besitzt, jedoch seitlich das Strahlprofil allmählich ausläuft, d.h. nicht rechteckig ist, sondern an den seitlichen Kanten abgerundet. Aus diesem Grund müssen wir also zuerst eine Messung ohne Probe und ohne Primärstrahlfänger durchführen. Da ohne weitere Maßnahmen damit der empfindliche Szintillitationsdetektor zerstört werden würde, schalten wir den Messingabsorber vor die Strahlungsquelle dazu, der Strahl wird insgesamt also stark abgeschwächt. Zusätzlich montieren wir einen horizontalen Spalt mit einer Breite von 200 µm vor den Detektor. Das Innere der Kratky-Kamera wird anschließend evakuiert und eine winkelabhängige Messung der Intensität gestartet. Wir erhalten folgende Messwerte:
 
-DATA
+\begin{center}
+  \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+    \hline
+    Detektorposition in µm & ? & ?\\ \hline
+    1700.000 & 25.100 & 1.584\\ \hline
+    1725.000 & 65.300 & 2.555\\ \hline
+    1750.000	 & 123.600 & 3.516\\ \hline
+    1775.000	 & 193.200 & 4.395\\ \hline
+    1800.000	 & 282.200 & 5.312\\ \hline
+    1825.000	 & 391.000 & 6.253\\ \hline
+    1850.000	 & 516.300 & 7.185\\ \hline
+    1875.000	 & 654.100 & 8.088\\ \hline
+    1900.000	 & 776.200 & 8.810\\ \hline
+    1925.000	 & 904.800 & 9.512\\ \hline
+    1950.000	 & 1098.700 & 10.482\\ \hline
+    1975.000 & 1243.200 & 11.150\\ \hline
+    2000.000 & 1400.700 & 11.835\\ \hline
+    2025.000 & 1494.900 & 12.227\\ \hline
+    2050.000	 & 1481.300 & 12.171\\ \hline
+    2075.000 & 1474.400 & 12.142\\ \hline
+    2100.000	 & 1336.700 & 11.562\\ \hline
+    2125.000	 & 1172.900 & 10.830\\ \hline
+    2150.000 & 941.600 & 9.704\\ \hline
+    2175.000	 & 706.700 & 8.407\\ \hline
+    2200.000	 & 486.600 & 6.976\\ \hline
+    2225.000	 & 266.800 & 5.165\\ \hline
+    2250.000	 & 114.300 & 3.381\\ \hline
+    2275.000 & 29.700 & 	1.723\\ \hline
+    2300.000 & 4.400	 & 0.663\\ \hline
+	\end{tabular}
+\end{center}
 
 Zuletzt setzen wir den Nullpunkt des Detektors auf das eben bestimmte Maximum des Primärstrahls, um die folgenden Messungen relativ dazu betrachten zu können.
 
