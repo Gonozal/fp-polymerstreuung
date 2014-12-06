@@ -115,10 +115,10 @@ TODO: Glasübergang vs. Kristallisation
 \section{Kristallinität in Polymeren}
 TODO: Warum kristallisieren polymere? Keimbildung, Teilkristallinität, $F = U - TS$ (Van der Vaals-Kräfte), Sphärolite, warum keine vollständige Kristallisation?
 
-\section{Rötgenstreuung}
+\section{Röntgenstreuung}
 TODO: Funktionsweie Röntgenröhren, Peaks, Streuung (Amplitude, Intensität, Furier, Autokorrelationsunfktion, Elektronendichte)
 
-Unter Röntgenstrahlung versteht man elektromagnetische Strahlung hoher Energie (zwischen 100 eV und einigen MeV), deren Wellenlängen entsprechend zwischen 10$^{-12}$ und 10$^{-8}$ liegen. Sie lässt sich beispielsweise mit einem Synchrotron oder einer Röntgenröhre erzeugen, wobei im Folgenden letztere verwendet wird und daher hier kurz auf die Funktionsweise eingegangen werden soll. Im Wesentlichen besteht die Röntgenröhre aus einer beheizten Kathode, die freie Elektronen erzeugt, sowie aus einer Anode, die gegenüber der Kathode eine Hochspannung von 40kV besitzt. Die Elektronen werden also zur Anode beschleunigt, was in zwei Arten von Strahlung resultiert, da zum einen Wechselwirkung der Elektronen mit dem elektromagnetischen Feld der Anode stattfindet, wobei die Elektronen abgelenkt bzw. gebremst werden (dies verursacht ein kontinuierliches Spektrum der sog. Bremsstrahlung), und zum andern die energiereicheren Elektronen Hüllenelektronen aus dem Anodematerial herausschlagen können. Der Effekt ist, dass ein Hüllenelektron der nächsten Schale nachrückt und genau die Energiedifferenz der beiden Schalen in Form von elektromagnetischer Strahlung frei wird. Es entsteht zusätzlich ein diskretes Spektrum der charakteristischen Röntgenstrahlung. Ein Übergang der L-Schale zur K-Schale wird dabei als $K_{\alpha}$-Linie bezeichnet, ein Übergang der M-Schale zur K-Schale als $K_{\beta}$-Linie usw.
+Unter Röntgenstrahlung versteht man elektromagnetische Strahlung hoher Energie (zwischen 100 eV und einigen MeV), deren Wellenlängen entsprechend zwischen 10$^{-12}$ und 10$^{-8}$ liegen. Sie lässt sich beispielsweise mit einem Synchrotron oder einer Röntgenröhre erzeugen, wobei im Folgenden letztere verwendet wird und daher hier kurz auf die Funktionsweise eingegangen werden soll. Im Wesentlichen besteht die Röntgenröhre aus einer beheizten Kathode, die freie Elektronen erzeugt, sowie aus einer Anode, die gegenüber der Kathode eine Hochspannung von 40kV besitzt. Die Elektronen werden also zur Anode beschleunigt, was in zwei Arten von Strahlung resultiert, da zum einen Wechselwirkung der Elektronen mit dem elektromagnetischen Feld der Anode stattfindet, wobei die Elektronen abgelenkt bzw. gebremst werden (dies verursacht ein kontinuierliches Spektrum der sog. Bremsstrahlung), und zum andern die energiereicheren Elektronen Hüllenelektronen aus dem Anodematerial herausschlagen können. Der Effekt ist, dass ein Hüllenelektron der nächsten Schale nachrückt und genau die Energiedifferenz der beiden Schalen in Form von elektromagnetischer Strahlung frei wird. Es entsteht zusätzlich ein diskretes Spektrum der charakteristischen Röntgenstrahlung. Ein Übergang der L-Schale zur K-Schale wird dabei als $K_{\alpha}$-Linie bezeichnet, ein Übergang der M-Schale zur K-Schale als $K_{\beta}$-Linie usw. Die Lage der Linien sind dabei vom Anodenmaterial abhängig, welches in diesem Fall Kupfer ist. 
 
 Alle Messungen werden mit einer sog. Kratky-Kompakt-Kamera durchgeführt. Sie besteht aus einem evakuierbaren Gehäuse (Betriebsdruck ca. 38 mbar), welches einseitig auf der Röntgenröhre aufliegt und an der anderen Seite einen per Schrittmotor fein verschiebbaren Szintillationsdetektor vorgeschaltet hat. An beiden Enden ist das Gehäuse mit 0,25 mm dicken Berylliumfenstern verschlossen, die der Röntgenstrahl durchdringt. Vor der Strahlungsquelle befindet sich zunächst das Kollimationssystem, ein sog. Blockkollimationssystem, welches aus drei rechteckigen, genau geschliffenen Blöcken besteht, wobei zwei Blöcke den Strahl nach oben begrenzen und einer nach unten. Der Strahl passiert zuerst den Eingangspalt (dies ist der vertikale Abstand der in Strahlrichtung ersten beiden Blöcke, welcher auf etwa 80 µm eingestellt wird) und danach den letzten oberen Block, welcher gemeinsam mit dem mittleren Block die Strahlebenen bestimmt und Streustrahlung unterdrückt. So kollimiert, trifft der Strahl auf die Probe (bzw. passiert bei der ersten Messung den leeren Probenhalter) und wird dann auf das Austrittsfenster gestreut. Bei den Messungen mit Probe wird der Primärstrahl, d.h. der nicht gestreute Strahl, durch einen metallenen Beamstop blockiert, um ein direktes Auftreffen auf den Detektor zu verhindern, da dieser dadurch zerstört werden würde. Der Abstand der Probe zum Detektor beträgt 20 cm.
 
@@ -135,40 +135,7 @@ Bei der Schmelze ist zu beachten, dass das PET verläuft und man deswegen die Me
 
 \section{Bestimmung des Primärstrahlprofils}
 
-Vor Beginn der eigentlichem Messung ist es notwendig, die Intensitätsverteilung des Primärstrahls zu bestimmen, da die Strichkollimation zwar gegenüber der Punktkollimation den Vorteil der generell höheren Intensität besitzt, jedoch das Strahlprofil nicht genau rechteckig ist, sondern abgerundet und zu den Rändern allmählich ausläuft. Aus diesem Grund müssen wir also zuerst eine Messung ohne Probe und ohne Primärstrahlfänger durchführen. Da ohne weitere Maßnahmen damit der empfindliche Szintillitationsdetektor zerstört werden würde, schalten wir den Messingabsorber vor die Strahlungsquelle dazu, der Strahl wird insgesamt also stark abgeschwächt. Zusätzlich montieren wir einen horizontalen Spalt mit einer Breite von 200 µm vor den Detektor. Das Innere der Kratky-Kamera wird anschließend evakuiert und eine winkelabhängige Messung der Intensität gestartet. Wir erhalten folgende Messwerte:
-
-\begin{center}
-  \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
-    \hline
-    Detektorposition in µm & ? & ?\\ \hline
-    1700.000 & 25.100 & 1.584\\ \hline
-    1725.000 & 65.300 & 2.555\\ \hline
-    1750.000	 & 123.600 & 3.516\\ \hline
-    1775.000	 & 193.200 & 4.395\\ \hline
-    1800.000	 & 282.200 & 5.312\\ \hline
-    1825.000	 & 391.000 & 6.253\\ \hline
-    1850.000	 & 516.300 & 7.185\\ \hline
-    1875.000	 & 654.100 & 8.088\\ \hline
-    1900.000	 & 776.200 & 8.810\\ \hline
-    1925.000	 & 904.800 & 9.512\\ \hline
-    1950.000	 & 1098.700 & 10.482\\ \hline
-    1975.000 & 1243.200 & 11.150\\ \hline
-    2000.000 & 1400.700 & 11.835\\ \hline
-    2025.000 & 1494.900 & 12.227\\ \hline
-    2050.000	 & 1481.300 & 12.171\\ \hline
-    2075.000 & 1474.400 & 12.142\\ \hline
-    2100.000	 & 1336.700 & 11.562\\ \hline
-    2125.000	 & 1172.900 & 10.830\\ \hline
-    2150.000 & 941.600 & 9.704\\ \hline
-    2175.000	 & 706.700 & 8.407\\ \hline
-    2200.000	 & 486.600 & 6.976\\ \hline
-    2225.000	 & 266.800 & 5.165\\ \hline
-    2250.000	 & 114.300 & 3.381\\ \hline
-    2275.000 & 29.700 & 	1.723\\ \hline
-    2300.000 & 4.400	 & 0.663\\ \hline
-	\end{tabular}
-\end{center}
-
+Vor Beginn der eigentlichem Messung ist es notwendig, die Intensitätsverteilung des Primärstrahls zu bestimmen, da die Strichkollimation zwar gegenüber der Punktkollimation den Vorteil der generell höheren Intensität besitzt, jedoch das Strahlprofil nicht genau rechteckig ist, sondern abgerundet und zu den Rändern allmählich ausläuft. Aus diesem Grund müssen wir also zuerst eine Messung ohne Probe und ohne Primärstrahlfänger durchführen. Da ohne weitere Maßnahmen damit der empfindliche Szintillitationsdetektor zerstört werden würde, schalten wir den Messingabsorber vor die Strahlungsquelle dazu, der Strahl wird insgesamt also stark abgeschwächt. Zusätzlich montieren wir einen horizontalen Spalt mit einer Breite von 200 µm vor den Detektor. Das Innere der Kratky-Kamera wird anschließend evakuiert und eine winkelabhängige Messung der Intensität gestartet. 
 Zuletzt setzen wir den Nullpunkt des Detektors auf das eben bestimmte Maximum des Primärstrahls, um die folgenden Messungen relativ dazu betrachten zu können.
 
 \section{Hintergrundmessung mit leerem Probenhalter und Aluminiumfolie}
