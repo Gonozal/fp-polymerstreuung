@@ -32,6 +32,25 @@
   }
 }
 
+% Anhänge für Original-Messdaten
+\usepackage{fancyvrb}
+
+% redefine \VerbatimInput
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+{fontsize=\footnotesize,
+ %
+ frame=lines,  % top and bottom rule only
+ framesep=2em, % separation between frame and text
+ fontsize=\scriptsize,
+ %
+ labelposition=topline,
+ %
+ commandchars=\|\(\), % escape character and argument delimiters for
+                      % commands within the verbatim
+ commentchar=*        % comment character
+}
+
+% Polar Plots
 \usetikzlibrary{pgfplots.polar}
 % Verwende deutsche Bezeichner für Inhaltsverzeichnis, ... (ngerman = New German: neue Rechtschreibung)
 \usepackage{ngerman}
@@ -231,6 +250,20 @@ TODO: Fazit, mögliche Verbesserungen (Herstellung der Probe?)
   \bibitem{GefahrenLaser} \url{http://de.wikipedia.org/w/index.php?title=Laser&oldid=128632514#Gefahren}
 \end{thebibliography}
 
+\chapter{Messdaten}
+\VerbatimInput[label=\fbox{beamprofile.bp}]{data/beamprofile.bp}
+\VerbatimInput[label=\fbox{untergrund.0.txt}]{data/untergrund.0.txt}
+\VerbatimInput[label=\fbox{Alu.ms}]{data/Alu.ms}
+\VerbatimInput[label=\fbox{PET-140.0.txt}]{data/PET-140.0.txt}
+\VerbatimInput[label=\fbox{PET-140.ms}]{data/PET-140.ms}
+\VerbatimInput[label=\fbox{PET-170.0.txt}]{data/PET-170.0.txt}
+\VerbatimInput[label=\fbox{PET-170.ms}]{data/PET-170.ms}
+\VerbatimInput[label=\fbox{PET-170-eigen.0.txt}]{data/PET-170-eigen.0.txt}
+\VerbatimInput[label=\fbox{PET-170-eigen.ms}]{data/PET-170-eigen.ms}
+\VerbatimInput[label=\fbox{PET-200.0.txt}]{data/PET-200.0.txt}
+\VerbatimInput[label=\fbox{PET-200.ms}]{data/PET-200.ms}
+\VerbatimInput[label=\fbox{PET-215.0.txt}]{data/PET-215.0.txt}
+\VerbatimInput[label=\fbox{PET-215.ms}]{data/PET-215.ms}
 \cleardoublepage{}
 % Eintrag fürs Inhaltsverzeichnis
 % Abbildungsverzeichnis einfügen
