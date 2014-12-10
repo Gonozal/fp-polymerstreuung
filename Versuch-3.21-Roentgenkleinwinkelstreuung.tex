@@ -165,12 +165,13 @@ Vor Beginn der eigentlichem Messung ist es notwendig, die Intensitätsverteilung
 Zuletzt setzen wir den Nullpunkt des Detektors auf das eben bestimmte Maximum des Primärstrahls, um die folgenden Messungen relativ dazu betrachten zu können.
 
 \section{Hintergrundmessung mit leerem Probenhalter und Aluminiumfolie}
+
 Um aus späteren Messungen die vom Probenbehlter und der Aluminiumfolie verursachte Hintergrundstrahlung herausrechnen zu können, war es notwendig, eine Messreihe mit einem leeren Probenbehälter durchzuführen. Dazu wurde der leere, mit Aluminiumfolie umwickelter, Probenbehälter in der Apparatur installiert, die Kratky-Kamera evakuiert und erneut eine winkelabhängige Messung der Intensität gestartet. Im Gegensatz zur Bestimmung des Primärstrahlprofils messen wir hier allerdings nur die gestreute Röntgenstrahlung, es wird also kein Absorber zur Abschwächung des Primärstrahls verwendet. Um dabei das Szintillatormessgerät nicht zu beschädigen, wird ein Primärstrahlfänger angebracht. Dieser ist so angebracht, dass der nicht abgelenkte Primärstrahl vollständig geblockt wird, die gestreute Strahlung allerdings ungehindert in den Szintillator eindringen kann.
 
 Die Original-Messdaten für diese Messung sind als "`Untergrund.0.txt"' angehängt.
 
 \subsection{Wanderspaltmessung}
-Zur Entschmierung der einzelnen Streudatenmessungen ist es notwendig, noch eine sogenannte Wanderspaltmessung durchzuführen. Dabei wird der zuvor angebrachte Horizontaler $200\mu m$ Spalt durch einen ebenfalls unbeweglichen $32 \mu m$ breiten vertikalen Spalt ausgetauscht. Zusätzlich wird vor der Probe ein beweglicher Spalt eingebracht. Dieser fährt in einem Zeitraum von 10 Sekunden von einer Seite des Primärstrahls zur anderen und anschließend mit gleicher Geschwindigkeit wieder zurück. Da bei dieser Messmethode nur ein sehr kleiner Teil der Strahlung beide Spalte passieren kann und statt der gesreuten Strahlung die Intensität des Primärstrahls gemessen wird, muss für die Wanderspaltmessung der Primärstrahlfänger entfernt werden.
+Zur Entschmierung der einzelnen Streudatenmessungen ist es notwendig, noch eine sogenannte Wanderspaltmessung durchzuführen. Dabei wird der zuvor angebrachte Horizontaler $200\mu m$ Spalt durch einen ebenfalls unbeweglichen $32 \mu m$ breiten vertikalen Spalt ausgetauscht. Zusätzlich wird vor der Probe ein beweglicher Spalt eingebracht. Dieser fährt in einem Zeitraum von 10 Sekunden von einer Seite des Primärstrahls zur anderen und anschließend mit gleicher Geschwindigkeit wieder zurück. Da bei dieser Messmethode nur ein sehr kleiner Teil der Strahlung beide Spalte passieren kann und statt der gestreuten Strahlung die Intensität des Primärstrahls gemessen wird, muss für die Wanderspaltmessung der Primärstrahlfänger entfernt werden.
 
 Die Messung der Intensität erfolgt hierbei nicht winkelabhängig, statdessen wird pro Messung die Intensität des Primärstrahls über die gesamten 20 Sekunden aufgenommen den der bewegliche Spalt braucht, um wieder in die Startposition zurückzukehren.
 
@@ -205,7 +206,41 @@ Die einzelnen Messungen wurde von uns in folgender Reihenfolge durchgeführt:
 
 \chapter{Auswertung}
 \section{Strahlcharakterisierung}
-TODO: Darstellung des Primärstrahls
+
+Folgende Grafik zeigt die Verteilung der Messereignisse in Abhängigkeit der vertikalen Detektorposition. Durch den horizontalen Spalt von 200 µm vor dem Detektor kann die Verteilung sehr genau über der Position aufgelöst werden. Wie zu sehen ist, liegt das Maximum bei 2050 µm und die Abnahme der Intensität ist nicht genau symmetrisch.
+
+\begin{center}
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south west,
+    title={Messereignisse in Abhängigkeit der Detektorposition},
+    xlabel=Detektorposition in µm,
+    x tick label style={/pgf/number format/1000 sep=},
+    ylabel=Messereignisse,
+    y tick label style={/pgf/number format/1000 sep=},
+    width=0.9\textwidth,
+    height= 9cm,
+    xmin=1500,
+    xmax=2500,
+    grid=both,
+    ymin=0,
+    %ymax=0.0045,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+]
+\addplot[red, only marks, mark=x, mark size=1pt, %error bars/.cd, y dir=both, y fixed relative=0.01, x dir=both, x fixed=0.05
+]
+table[x index={0},y index={1}] {data/beamprofile2.bp};
+%\addlegendentry{Leistung der LED auf der Photoplatte}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Zahl der Messereignisse über der Detektorpositon mit leeren Probenhalter, ohne beamstop und mit Messing-Strahlabsorber.}
+\end{figure}
+\end{center}
 
 \section{PET-Streudaten}
 TODO: Rohdaten, Entschmierung, Intensität vs. Streuvektor, Langperiode abschätzen
