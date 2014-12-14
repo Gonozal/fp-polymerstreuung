@@ -1,0 +1,256 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8884,        247]
+NotebookOptionsPosition[      8471,        228]
+NotebookOutlinePosition[      8828,        244]
+CellTagsIndexPosition[      8785,        241]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{
+   "a", ",", " ", "x", ",", " ", "b", ",", " ", "data", ",", " ", "fit"}], 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"17.85", ",", "4.865"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"32.85", ",", "4.456"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"62.85", ",", "3.951"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"92.85", ",", "3.402"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fit", " ", "=", " ", 
+   RowBox[{"NonlinearModelFit", "[", 
+    RowBox[{"data", ",", 
+     RowBox[{
+      RowBox[{"a", " ", "/", " ", "x"}], " ", "+", " ", "b"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", " ", "b"}], "}"}], ",", 
+     RowBox[{"{", "x", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fit", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<BestFit\>\"", ",", "\"\<ParameterTable\>\""}], "}"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{
+   "a", ",", " ", "x", ",", " ", "b", ",", " ", "data", ",", " ", "fit"}], 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"17.85", ",", "15.040"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"32.85", ",", "12.633"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"62.85", ",", "10.829"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"92.85", ",", "9.625"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fit", " ", "=", " ", 
+   RowBox[{"NonlinearModelFit", "[", 
+    RowBox[{"data", ",", 
+     RowBox[{
+      RowBox[{"a", " ", "/", " ", 
+       RowBox[{"Sqrt", "[", "x", "]"}]}], " ", "+", " ", "b"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", " ", "b"}], "}"}], ",", 
+     RowBox[{"{", "x", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fit", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<BestFit\>\"", ",", "\"\<ParameterTable\>\""}], "}"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{
+   "a", ",", " ", "x", ",", " ", "b", ",", " ", "c", ",", " ", "data", ",", 
+    " ", "fit"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"140", ",", "0.113"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"170", ",", "0.123"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"200", ",", "0.134"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"215", ",", "0.106"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fit", " ", "=", " ", 
+   RowBox[{"NonlinearModelFit", "[", 
+    RowBox[{"data", ",", 
+     RowBox[{
+      RowBox[{"a", " ", 
+       RowBox[{"x", "^", "2"}]}], " ", "+", " ", 
+      RowBox[{"b", " ", "x"}], " ", "+", " ", "c"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", " ", "b", ",", " ", "c"}], "}"}], ",", 
+     RowBox[{"{", "x", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fit", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<BestFit\>\"", ",", "\"\<ParameterTable\>\""}], "}"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"FindMaximum", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", "0.3059120603015011`"}], "+", 
+    RowBox[{"0.004912311557788879`", " ", "x"}], "-", 
+    RowBox[{"0.000013819095477386762`", " ", 
+     SuperscriptBox["x", "2"]}]}], ",", " ", "x"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.627583009579361*^9, 3.6275832013083467`*^9}, {
+  3.627583284184804*^9, 3.62758328630926*^9}, {3.6275833343595037`*^9, 
+  3.627583336205678*^9}, {3.627583460217226*^9, 3.627583461197364*^9}, {
+  3.627583579703175*^9, 3.627583675103457*^9}, {3.6275845299207907`*^9, 
+  3.6275846108165607`*^9}, {3.627585591756648*^9, 3.6275856015127697`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"3.3419563244403188`", "\[VeryThinSpace]", "+", 
+    FractionBox["29.220747686287478`", "x"]}], ",", 
+   StyleBox[
+    TagBox[GridBox[{
+       {"\<\"\"\>", "\<\"Estimate\"\>", "\<\"Standard Error\"\>", "\<\"t\
+\[Hyphen]Statistic\"\>", "\<\"P\[Hyphen]Value\"\>"},
+       {"a", "29.220747686287478`", "7.770921882680694`", 
+        "3.7602678456223715`", "0.0640078519701075`"},
+       {"b", "3.3419563244403188`", "0.25873610986956863`", 
+        "12.916466611966266`", "0.005940583936853372`"}
+      },
+      AutoDelete->False,
+      GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+      GridBoxDividers->{
+       "ColumnsIndexed" -> {2 -> GrayLevel[0.7]}, 
+        "RowsIndexed" -> {2 -> GrayLevel[0.7]}},
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      GridBoxSpacings->{
+       "ColumnsIndexed" -> {2 -> 1}, "RowsIndexed" -> {2 -> 0.75}}],
+     "Grid"], "DialogStyle",
+    StripOnInput->False]}], "}"}]], "Output",
+ CellChangeTimes->{3.627583202446026*^9, 3.6275832870960217`*^9, 
+  3.627583337214183*^9, 3.627583637559189*^9, 3.627583676605792*^9, 
+  3.627584622049609*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"5.628306006381483`", "\[VeryThinSpace]", "+", 
+    FractionBox["39.95394767267033`", 
+     SqrtBox["x"]]}], ",", 
+   StyleBox[
+    TagBox[GridBox[{
+       {"\<\"\"\>", "\<\"Estimate\"\>", "\<\"Standard Error\"\>", "\<\"t\
+\[Hyphen]Statistic\"\>", "\<\"P\[Hyphen]Value\"\>"},
+       {"a", "39.95394767267033`", "1.5733760403063566`", 
+        "25.393768971396554`", "0.001547165856720878`"},
+       {"b", "5.628306006381483`", "0.2646182383106477`", 
+        "21.26953169333004`", "0.002203165200372781`"}
+      },
+      AutoDelete->False,
+      GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+      GridBoxDividers->{
+       "ColumnsIndexed" -> {2 -> GrayLevel[0.7]}, 
+        "RowsIndexed" -> {2 -> GrayLevel[0.7]}},
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      GridBoxSpacings->{
+       "ColumnsIndexed" -> {2 -> 1}, "RowsIndexed" -> {2 -> 0.75}}],
+     "Grid"], "DialogStyle",
+    StripOnInput->False]}], "}"}]], "Output",
+ CellChangeTimes->{3.627583202446026*^9, 3.6275832870960217`*^9, 
+  3.627583337214183*^9, 3.627583637559189*^9, 3.627583676605792*^9, 
+  3.6275846220525084`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", "0.3059120603015011`"}], "+", 
+    RowBox[{"0.004912311557788879`", " ", "x"}], "-", 
+    RowBox[{"0.000013819095477386762`", " ", 
+     SuperscriptBox["x", "2"]}]}], ",", 
+   StyleBox[
+    TagBox[GridBox[{
+       {"\<\"\"\>", "\<\"Estimate\"\>", "\<\"Standard Error\"\>", "\<\"t\
+\[Hyphen]Statistic\"\>", "\<\"P\[Hyphen]Value\"\>"},
+       {"a", 
+        RowBox[{"-", "0.000013819095477386762`"}], "0.000011622504174608417`", 
+        RowBox[{"-", "1.1889946667067859`"}], "0.44517112803737097`"},
+       {"b", "0.004912311557788879`", "0.0041268212569018055`", 
+        "1.1903378537593308`", "0.4448170943976681`"},
+       {"c", 
+        RowBox[{"-", "0.3059120603015011`"}], "0.35792954633114693`", 
+        RowBox[{"-", "0.8546711592746785`"}], "0.5497827072908521`"}
+      },
+      AutoDelete->False,
+      GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Automatic}}},
+      GridBoxDividers->{
+       "ColumnsIndexed" -> {2 -> GrayLevel[0.7]}, 
+        "RowsIndexed" -> {2 -> GrayLevel[0.7]}},
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+      GridBoxSpacings->{
+       "ColumnsIndexed" -> {2 -> 1}, "RowsIndexed" -> {2 -> 0.75}}],
+     "Grid"], "DialogStyle",
+    StripOnInput->False]}], "}"}]], "Output",
+ CellChangeTimes->{3.627583202446026*^9, 3.6275832870960217`*^9, 
+  3.627583337214183*^9, 3.627583637559189*^9, 3.627583676605792*^9, 
+  3.627584622055518*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 756},
+WindowMargins->{{Automatic, 186}, {41, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 4004, 111, 311, "Input"],
+Cell[4586, 135, 1184, 26, 63, "Output"],
+Cell[5773, 163, 1198, 27, 63, "Output"],
+Cell[6974, 192, 1481, 33, 77, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

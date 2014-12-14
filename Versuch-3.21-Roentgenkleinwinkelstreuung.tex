@@ -64,6 +64,28 @@
   }
 }
 
+\pgfkeys{
+  /pgfplots/tabh/.style={
+    legend pos=north east,
+    x tick label style={/pgf/number format/1000 sep=},
+    xlabel=Unterkühlung in $K$,
+    y tick label style={/pgf/number format/1000 sep=},
+    width=0.38\linewidth,
+    height=0.30\linewidth,
+    scale only axis,
+    xmin=0,
+    xmax=100,
+    grid=both,
+    ymin=3,
+    ymax=6,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+  }
+}
+
 % Anhänge für Original-Messdaten
 \usepackage{fancyvrb}
 
@@ -225,6 +247,7 @@ Um den Fehler der Messung (Verursacht durch die statistische Natur der emittiert
 
 Die Original-Messdaten für diese Messung sind als "`Alu.ms"' angehängt.
 
+\clearpage{}
 \section{Messungen mit Probe}
 Analog zur winkelabhängigen- und Wanderspaltmessung mit der leeren Probe haben wir die Intensität des Primärstrahls mit der Wanderspalt-Messmethode sowie die winkelabhängige Intensität der gestreuten Strahlung für jede der uns zur Verfügung stehendenden Proben gemessen. Dabei ist anzumerken, dass bei der Messung der ersten Probe die Röntgenröhre ausgeschaltet war. Die Ursache für die Abschaltung ist uns nicht genau bekannt, eventuell ist jemand trotz aller Vorsicht versehentlich gegen den gelben Strom-Schalter für die Röntgenröhre gekommen.
 
@@ -502,24 +525,181 @@ Dazu wird durch den anfänglich linear abfallenden Teil eine Fitgerade gelegt. D
 \end{tikzpicture}
 \captionof{figure}{Autokorrelationsfunktionen der untersuchten Proben. Mit hilfe eines linearen fits im vorderen Bereich der Funktion lassen sich Werte für Q und $d_c$ bestimmen. der Wert für $d_{ac}$ ergibt sich aus der Position des ersten lokalen Maximums}
 \end{figure}
-
+\FloatBarrier
 Aus den Autokorrelationsfunktionen lassen sich folgende Werte für die uns zur verfügung stehenden Proben entnehmen:
 
 \begin{center}
-  \begin{tabular}{|p{4cm}|p{4.5cm}|p{4.5cm}|p{4.5cm}|p{4.5cm}
+  \begin{tabular}{|p{4.5cm}|p{2.6cm}|p{2.6cm}|p{2.6cm}|p{2.6cm}|}
     \hline
-    Kristallisierungstemperatur der Probe in °C & $d_c$ in $nm$ & $d_{ac}$ in $nm$ & Q       & $\Phi_c$ \\ \hline
-    140                                         & $ \pm $       & $ \pm $          & $ \pm $ & $ \pm $  \\ \hline
-    170                                         & $ \pm $       & $ \pm $          & $ \pm $ & $ \pm $  \\ \hline
-    170 (selbst getempert)                      & $ \pm $       & $ \pm $          & $ \pm $ & $ \pm $  \\ \hline
-    200                                         & $ \pm $       & $ \pm $          & $ \pm $ & $ \pm $  \\ \hline
-    215                                         & $ \pm $       & $ \pm $          & $ \pm $ & $ \pm $  \\ \hline
+    Kristallisierungstemperatur der Probe in °C & $d_c$ in $nm$     & $d_{ac}$ in $nm$   & Q                 & $ \Phi_c$         \\ \hline
+    140                                         & $3,402 \pm 0,047$ & $ 9,625 \pm 0,481$ & $141,44 \pm 4,25$ & $0,113 \pm 0,004$ \\ \hline
+    170                                         & $3,951 \pm 0,045$ & $10,829 \pm 0,541$ & $151,83 \pm 4,16$ & $0,123 \pm 0,004$ \\ \hline
+    170 (selbst getempert)                      & $4,561 \pm 0,066$ & $12,633 \pm 0,632$ & $146,04 \pm 4,95$ & $0,117 \pm 0,005$ \\ \hline
+    200                                         & $4,456 \pm 0,057$ & $12,633 \pm 0,632$ & $163,31 \pm 5,00$ & $0,134 \pm 0,005$ \\ \hline
+    215                                         & $4,865 \pm 0,073$ & $15,040 \pm 0,752$ & $134,23 \pm 3,40$ & $0,106 \pm 0,003$ \\ \hline
 	\end{tabular}
 \end{center}
 
+Man kann nun sowohl die Kristallitdicke als auch die Langperiode gegenüber der Differenz zwischen der Kristallisationstemperatur der Proben und dem Schmelzpunkt des Materials auftragen. Zu erwarten ist hier eine $\frac{1}{T}$ Abhängigkeit für die Kristallitdicke und eine $\frac{1}{\sqrt{T}}$ Abhängigkeit für die Langperiode.
 \FloatBarrier
-\chapter{Fazit}
-TODO: Fazit, mögliche Verbesserungen (Herstellung der Probe?)
+
+
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{axis}[
+  title={Kristallitdicke in abh. der Temperaturdifferenz},
+  ylabel=Kristallitdicke in $nm$,
+  tabh,
+  name=first
+]
+\addplot[red, only marks, mark=x, mark size=2pt, 
+  error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
+  coordinates{
+  (62.85,4.561) +- (0.5, 0.066)
+};
+\addlegendentry{Selbst erstellte Probe}
+\addplot[blue, only marks, mark=x, mark size=2pt, 
+  error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
+  coordinates{
+  (17.85,4.865) +- (0.5, 0.073)
+  (32.85,4.456) +- (0.5, 0.057)
+  (62.85,3.951) +- (0.5, 0.045)
+  (92.85,3.402) +- (0.5, 0.047)
+};
+\addlegendentry{Gestellte Proben}
+
+\addplot[black, mark=x, mark size=0pt, samples=20, domain=0:20] {3.34196 + 29.2207/x};
+\addplot[black, mark=x, mark size=0pt, samples=40, domain=20:100] {3.34196 + 29.2207/x};
+\addlegendentry{Fit-Kurve}
+\end{axis}
+
+
+\begin{axis}[
+  title={Langperiode in abh. der Temperaturdifferenz},
+  tabh,
+  ylabel=Langperiode in $nm$,
+  ymin=8,
+  ymax=20,
+  name=second,
+  at=(first.outer south east),
+  anchor=outer south west
+]
+\addplot[red, only marks, mark=x, mark size=2pt, 
+  error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
+  coordinates{
+  (62.85,12.633) +- (0.5, 0.632)
+};
+\addlegendentry{Selbst erstellte Probe}
+\addplot[blue, only marks, mark=x, mark size=2pt, 
+  error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
+  coordinates{
+  (92.85, 9.625) +- (0.5, 0.481)
+  (62.85,10.829) +- (0.5, 0.541)
+  (32.85,12.633) +- (0.5, 0.632)
+  (17.85,15.040) +- (0.5, 0.752)
+};
+\addlegendentry{Gestellte Proben}
+
+\addplot[black, mark=x, mark size=0pt, samples=20, domain=0:20] {5.62831 + 39.9539/x^0.5};
+\addplot[black, mark=x, mark size=0pt, samples=40, domain=20:100] {5.62831 + 39.9539/x^0.5};
+\addlegendentry{Fit-Kurve}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{}
+\end{figure}
+\FloatBarrier
+Es ist auffällig, dass die von uns hergestellte, in rot markierte Probe in keinem der Graphen zu den erwarteten Werten passt. Dies kann in der bereits in der Durchführung erwähnten zu hohen Temperatur, die zum Schmelzen des PET-Materials verwendet wurde, begründet sein.
+
+Für die uns gestellten Proben passt die erwartete $\frac{1}{\sqrt{T}}$ Abhängigkeit der Langperiode zur Kristallisationstemperatur hier sehr gut zu den aufgenommenen Messdate, während die gemessenen Punkte für die Kristallitdicke größtenteils abseits der $\frac{1}{T}$ Kurve liegen.
+
+\clearpage{}
+
+Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristallisationstemperatur haben wir einen parabelförmigen Fit durch die uns zur Verfügung stehenden Messdaten gelegt. 
+
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{axis}[
+  title={Kristallinität in Abh. der Kristallisationstemperatur},
+  ylabel=Kristallinität,
+  legend pos=south east,
+  x tick label style={/pgf/number format/1000 sep=},
+  xlabel=Kristallisationstemperatur in °C
+  y tick label style={/pgf/number format/1000 sep=},
+  width=0.9\linewidth,
+  height=0.5\linewidth,
+  scale only axis,
+  xmin=100,
+  xmax=230,
+  grid=both,
+  ymin=0,
+  ymax=0.15,
+  tick align=outside,
+  tickpos=left,
+  minor x tick num=3,
+  minor y tick num=4,
+  minor grid style={dotted,thin}
+]
+\addplot[red, only marks, mark=x, mark size=2pt, 
+  error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
+  coordinates{
+  (170,0.117)   +- (0.5, 0.005)
+};
+\addlegendentry{Selbst erstellte Probe}
+\addplot[blue, only marks, mark=x, mark size=2pt, 
+  error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
+  coordinates{
+  (140,0.113) +- (0.5, 0.004)
+  (170,0.123) +- (0.5, 0.004)
+  (200,0.134) +- (0.5, 0.005)
+  (215,0.106) +- (0.5, 0.003)
+};
+\addlegendentry{Gestellte Proben}
+
+\addplot[black, mark=x, mark size=0pt, samples=60, domain=100:230] {-0.305912 + 0.00491231*x - 0.0000138191*x^2};
+\addlegendentry{Fit-Kurve}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{}
+\end{figure}
+
+Auch hier passt der Datenpunkt der von uns hergestellten Probe nicht zum erwarteten Wert, wobei es sinnig erscheint, dass bei einem "`verbrennen"' der Probe die Kristallinität gegenüber einer sauber geschmolzenen Probe abnimmt.
+
+Anhand des Parabel-Fits lässt sich die Temperatur, unter der maximale Kristallisierung auftritt auf etwa $T_k = 177.7$ Grad Celsius abschätzen. Auf Grund der geringen Anzahl an Datenpunkten ist diese Abschätzung aber maximal als grobe Richtlinie anzusehen.
+
+\clearpage{}
+\subsection{Fitwerte}
+
+Für den Fit der Kristallitdicke haben wir eine Funktion der Form $f\left(x\right) = \frac{a}{T} + b$ zu Grunde gelegt. Es ergeben sich folgende Fitwerte:
+\begin{center}
+  \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+    \hline
+    Parameter & Wert    & Fehler \\ \hline
+    a         & 29.22   & 7.77   \\ \hline
+    b         & 3.34    & 0.26   \\ \hline
+	\end{tabular}
+\end{center}
+
+Für die Langperiode wurde eine Funktion der Form $f\left(x\right)  = \frac{a}{\sqrt{T}} + b$ zu Grunde gelegt. Folgende Werte haben wir bestimmt:
+\begin{center}
+  \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+    \hline
+    Parameter & Wert    & Fehler \\ \hline
+    a         & 39.95   & 1.57   \\ \hline
+    b         & 5.63    & 0.26   \\ \hline
+	\end{tabular}
+\end{center}
+
+Zum fitten der Parabel als Modell für die Kristallinität in Abhängigkeit der Temperatur wurde $f\left(x\right)  = ax^2 + bx + c$ als Funktion verwendet
+
+\begin{center}
+  \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+    \hline
+    Parameter & Wert    & Fehler \\ \hline
+    a         & 0.0000  & 0.0000 \\ \hline
+    b         & 0.0049  & 0.0041 \\ \hline
+    c         & -0.3059 & 0.3579 \\ \hline
+	\end{tabular}
+\end{center}
 
 %ENDE INHALT
 \cleardoublepage{}
