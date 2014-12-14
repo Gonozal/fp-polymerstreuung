@@ -19,16 +19,48 @@
 % Paket zum Plotten von Datensätzen
 \usepackage{pgfplots}
 \pgfkeys{
-  /pgfplots/PolarStyle/.style={
-    ylabel=Leistung in W,
-    width=0.33\linewidth,
-    height=0.33\linewidth,
+  /pgfplots/Streudaten/.style={
+    legend pos=north east,
+    xlabel=Streuvektor s in 1/nm,
+    x tick label style={/pgf/number format/1000 sep=},
+    ylabel=$I\cdot s^{2}$,
+    y tick label style={/pgf/number format/1000 sep=},
+    width=0.38\linewidth,
+    height=0.40\linewidth,
     scale only axis,
+    xmin=0,
+    xmax=0.44,
     grid=both,
+    ymin=-10,
+    %ymax=0.0045,
     tick align=outside,
     tickpos=left,
-    minor x tick num=2,
-    minor y tick num=1
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+  }
+}
+
+\pgfkeys{
+  /pgfplots/Autokorrel/.style={
+    legend pos=north east,
+    xlabel=u  in  nm,
+    x tick label style={/pgf/number format/1000 sep=},
+    ylabel=$K(u)$ in $\frac{e}{nm^{6}}$,
+    y tick label style={/pgf/number format/1000 sep=},
+    width=0.38\linewidth,
+    height=0.30\linewidth,
+    scale only axis,
+    xmin=0,
+    xmax=25,
+    grid=both,
+    ymin=-105,
+    ymax=155,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
   }
 }
 
@@ -257,11 +289,235 @@ table[x index={0},y index={1}] {data/beamprofile2.bp};
 \end{center}
 
 \section{PET-Streudaten}
-TODO: Rohdaten, Entschmierung, Intensität vs. Streuvektor, Langperiode abschätzen
+Mit Hilfe des Primärstralprofils und der Wanderspaltmessungen lassen sich die gemessenen Streudaten entschmieren, wodurch der Einfluss des nicht perfekt rechteckigen Strahlprofils herausrechnen lässt. Nach Entschmierung leifert das verwendete Messprogramm eine .phg Datei, welche den Streuvektor q in inversen Angström, die Intensität in $e/nm^{3}$ und den Fehler der Inensität beinhaltet. Zur Darstellung und weiteren Verarbeitunt der Streudaten ist es vom Vorteil, den Streuvektor q in $s=\frac{q}{2\pi}$ umzurechnen und die Intensität mit $s^{2}$ multipliziert darzustellen.
+
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{axis}[
+  title={Streudaten für 140°C PET-Probe},
+  Streudaten,
+  name=first
+]
+\addplot[red, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-140-nonFitPoints.rel};
+\addlegendentry{Streudaten}
+\addplot[green, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-140-fitPoints.rel};
+\addlegendentry{Untergrund}
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {8.88877 + 53.2782*x};
+\addlegendentry{Fitgerade}
+\end{axis}
+
+\begin{axis}[
+  title={Streudaten für 170°C PET-Probe},
+  Streudaten,
+  name=second,
+  at=(first.outer south east),
+  anchor=outer south west
+]
+\addplot[red, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-170-nonFitPoints.rel};
+\addlegendentry{Streudaten}
+\addplot[green, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-170-fitPoints.rel};
+\addlegendentry{Untergrund}
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {28.6315 - 18.414*x};
+\addlegendentry{Fitgerade}
+\end{axis}
+
+\begin{axis}[
+  title={Streudaten für 200°C PET-Probe},
+  Streudaten,
+  name=third,
+  at=(first.outer south west),
+  anchor=outer north west,
+  yshift=-0.25cm
+]
+\addplot[red, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-200-nonFitPoints.rel};
+\addlegendentry{Streudaten}
+\addplot[green, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-200-fitPoints.rel};
+\addlegendentry{Untergrund}
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {26.2496 - 13.8354*x};
+\addlegendentry{Fitgerade}
+\end{axis}
+
+\begin{axis}[
+  title={Streudaten für 215°C PET-Probe},
+  Streudaten,
+  name=fourth,
+  at=(third.outer south east),
+  anchor=outer south west
+]
+\addplot[red, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-215-nonFitPoints.rel};
+\addlegendentry{Streudaten}
+\addplot[green, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-215-fitPoints.rel};
+\addlegendentry{Untergrund}
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {-4.30741 + 85.2084*x};
+\addlegendentry{Fitgerade}
+\end{axis}
+
+\end{tikzpicture}
+\captionof{figure}{Streudaten der nicht von uns selbst hergestellten Proben. Zu erkennen ist ein von der Kristallisationstemperatur der Probe abhängender Peak und ein anschließender, annähernd linear Anstieg der gemessenen Intensität.}
+\end{figure}
+
+\FloatBarrier
+
+Wie an den Graphen zu erkennen ist, liegt in den gemessenen Daten eine gewisse Untergrundstrahlung vor, die annähernd linear zum Streuvektor zunimmt. Um die Messdaten weiter verarbeiten zu können, muss dieser Untergrund herausgerechnet werden. Dazu haben wir einen linearen fit durch die Messdaten nach dem eigentlichen Peak gelegt (in den Graphen in grün gekennzeichnet) und von den gemessenen Daten abgezogen.
+
+Der in der Versuchsanleitung angegebener parabelförmiger Verlauf des Untergrundes konnte von uns nicht bestätigt werden. Versuche, einen Parabel-Fit an die gemessenen Daten zu legen haben keine verwertbaren Ergebnisse geliefert.
+
+\subsection{Fitwerte}
+Zur Bestimmung des Untergrunds haben wir eine Gerade der Form $f(x) = a \cdot x + b$ an die Streudaten hinter dem Peak angefittet. Die für den Fit verwendete Messdaten sind in den oben dargestellten Graphen grün markiert.
+
+\begin{center}
+  \begin{tabular}{|p{7cm}|p{4.5cm}|p{4.5cm}|}
+    \hline
+    Kristallisierungstemperatur der Probe & a                      & b                      \\ \hline
+    140                                   & $53,2782 \pm 41,6721$  & $8,88877 \pm 13,4815$  \\ \hline
+    170                                   & $-18,414 \pm 42,6279$  & $28,6315 \pm 13,6246$  \\ \hline
+    170 (selbst getempert)                & $-22,5995 \pm 41,975$  & $22,1899 \pm 12,9489$  \\ \hline
+    200                                   & $-13,8354 \pm 35,6281$ & $26,2496 \pm 10,7408$  \\ \hline
+    215                                   & $85,2084 \pm 33,7823$  & $-4,30741 \pm 10,1843$ \\ \hline
+	\end{tabular}
+\end{center}
+
+Auf grund der sehr hohen Streuung der hinteren Messwerte sind die resultierenden fits wie erwartet mit einem sehr großen Fehler behaftet.
+
 
 \section{Eindimensionale Korrelationsfunkton}
-TODO: Berechnung/Darstellung von K(Z), Kristallinität, Langperiode, Kristallicke, Zusammenhang mit Temperatur, Vergleich mit Theorie
+Die um den linearen Anteil korrigierten Streudaten können nun mit Hilfe des Programms "`CORREL1"' mittels Furiertransformation in eine Autokorrelationsfunktion umgerechnet werden. Mit Hilfe dieser Funktion ist es möglich, werte Für $Q$, $d_c$ und $d_{ac}$ für die einzelnen Probem zu bestimmen.
 
+Dazu wird durch den anfänglich linear abfallenden Teil eine Fitgerade gelegt. Der y-Achsenabschnitt dieser Gerade gibt uns den Wert für Q, welcher sich in den gesuchten Wert $\Phi_c$ für die Kristallinität der Probe umrechnen lässt. Den Wert für $d_c$ ist der x-Wert des Schnittpunktes der fitgeraden mit einer Konstanten, die durch den tiefsten Punkt der Autokorrelationsfunktion verläuft. Den Wert für $d_{ac}$ erhält man aus dem x-Wert des ersten lokalen Maximums der Autokorrelationsfunktion.
+
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{axis}[
+  title={Autokor. für PET Kristall. bei 140°C},
+  Autokorrel,
+  name=first
+]
+\addplot[red, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-140.cor};
+\addlegendentry{Autokorrelationsfunktion}
+
+\addplot[black, mark=x, mark size=0pt, samples=20, domain=0:25] {0};
+
+\addplot[blue, mark=x, mark size=0pt, samples=20] {141.435 - 62.1333*x};
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:25] {-69.9944};
+\draw (axis cs:3.4028309859764407,-69.9944) -- (axis cs:3.4028309859764407,0) node [above] {$d_c$};
+\draw (axis cs:9.62545,0) -- (axis cs:9.62545,18.1889) node [above] {$d_{ac}$};
+\addlegendentry{Fitgerade}
+\end{axis}
+
+
+\begin{axis}[
+  title={Autokor. für PET Kristall. bei 170°C},
+  Autokorrel,
+  name=second,
+  at=(first.outer south east),
+  anchor=outer south west
+]
+\addplot[red, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-170.cor};
+\addlegendentry{Autokorrelationsfunktion}
+
+\addplot[black, mark=x, mark size=0pt, samples=20, domain=0:25] {0};
+\addplot[blue, mark=x, mark size=0pt, samples=20] {151.827 - 62.233*x};
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:25] {-94.0629};
+\draw (axis cs:3.9511177627482557,-94.0629) -- (axis cs:3.9511177627482557,0) node [above] {$d_c$};
+\draw (axis cs:10.8286,0) -- (axis cs:10.8286,24.2523) node [above] {$d_{ac}$};
+\addlegendentry{Fitgerade}
+\end{axis}
+
+\begin{axis}[
+  title={Autokor. für eigenen PET Kristall. bei 170°C},
+  Autokorrel,
+  name=third,
+  at=(first.outer south west),
+  anchor=outer north west,
+  yshift=-0.25cm
+]
+\addplot[red, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-170-eigen.cor};
+\addlegendentry{Autokorrelationsfunktion}
+
+\addplot[black, mark=x, mark size=0pt, samples=20, domain=0:25] {0};
+\addplot[blue, mark=x, mark size=0pt, samples=20] {146.043 - 50.1273*x};
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:25] {-82.6048};
+\draw (axis cs:4.561345164316567,-82.6048) -- (axis cs:4.561345164316567,0) node [above] {$d_c$};
+\draw (axis cs:12.6334,0) -- (axis cs:12.6334,21.1631) node [above] {$d_{ac}$};
+\addlegendentry{Fitgerade}
+\end{axis}
+
+\begin{axis}[
+  title={Autokor. für PET Kristall. bei 200°C},
+  Autokorrel,
+  name=fourth,
+  at=(third.outer south east),
+  anchor=outer south west
+]
+\addplot[red, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-200.cor};
+\addlegendentry{Autokorrelationsfunktion}
+
+\addplot[black, mark=x, mark size=0pt, samples=20, domain=0:25] {0};
+\addplot[blue, mark=x, mark size=0pt, samples=20] {163.311 - 55.806*x};
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:25] {-85.3636};
+\draw (axis cs:4.45604668027861,-85.3636) -- (axis cs:4.45604668027861,0) node [above] {$d_c$};
+\draw (axis cs:12.6334,0) -- (axis cs:12.6334,19.6929) node [above] {$d_{ac}$};
+\addlegendentry{Fitgerade}
+\end{axis}
+
+\begin{axis}[
+  title={Autokor. für PET Kristall. bei 215°C},
+  Autokorrel,
+  name=fith,
+  at=(third.outer south west),
+  anchor=outer north west,
+  yshift=-0.25cm
+]
+\addplot[red, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-215.cor};
+\addlegendentry{Autokorrelationsfunktion}
+
+\addplot[black, mark=x, mark size=0pt, samples=20, domain=0:25] {0};
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:6] {134.23 - 36.6323*x};
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:25] {-43.9908};
+\draw (axis cs:4.865133613018904,-43.9908) -- (axis cs:4.865133613018904,0) node [above] {$d_c$};
+\draw (axis cs:15.0398,0) -- (axis cs:15.0398,6.91414) node [above] {$d_{ac}$};
+\addlegendentry{Fitgerade}
+\end{axis}
+
+\begin{axis}[
+  title={Autokorrelationsfunktionen},
+  Autokorrel,
+  name=sixth,
+  at=(fith.outer south east),
+  anchor=outer south west
+]
+\addplot[red, smooth, mark=x, mark size=0pt] table[x index=0,y index=1] {data/PET-140.cor};
+\addlegendentry{140°C}
+\addplot[green, smooth, mark=x, mark size=0pt] table[x index=0,y index=1] {data/PET-170.cor};
+\addlegendentry{170°C}
+\addplot[blue, smooth, mark=x, mark size=0pt] table[x index=0,y index=1] {data/PET-170-eigen.cor};
+\addlegendentry{170°C (eigen)}
+\addplot[purple, smooth, mark=x, mark size=0pt] table[x index=0,y index=1] {data/PET-200.cor};
+\addlegendentry{200°C}
+\addplot[orange, smooth, mark=x, mark size=0pt] table[x index=0,y index=1] {data/PET-215.cor};
+\addlegendentry{215°C}
+\addplot[black, mark=x, mark size=0pt, samples=20, domain=0:25] {0};
+\end{axis}
+
+\end{tikzpicture}
+\captionof{figure}{Autokorrelationsfunktionen der untersuchten Proben. Mit hilfe eines linearen fits im vorderen Bereich der Funktion lassen sich Werte für Q und $d_c$ bestimmen. der Wert für $d_{ac}$ ergibt sich aus der Position des ersten lokalen Maximums}
+\end{figure}
+
+Aus den Autokorrelationsfunktionen lassen sich folgende Werte für die uns zur verfügung stehenden Proben entnehmen:
+
+\begin{center}
+  \begin{tabular}{|p{4cm}|p{4.5cm}|p{4.5cm}|p{4.5cm}|p{4.5cm}
+    \hline
+    Kristallisierungstemperatur der Probe in °C & $d_c$ in $nm$ & $d_{ac}$ in $nm$ & Q       & $\Phi_c$ \\ \hline
+    140                                         & $ \pm $       & $ \pm $          & $ \pm $ & $ \pm $  \\ \hline
+    170                                         & $ \pm $       & $ \pm $          & $ \pm $ & $ \pm $  \\ \hline
+    170 (selbst getempert)                      & $ \pm $       & $ \pm $          & $ \pm $ & $ \pm $  \\ \hline
+    200                                         & $ \pm $       & $ \pm $          & $ \pm $ & $ \pm $  \\ \hline
+    215                                         & $ \pm $       & $ \pm $          & $ \pm $ & $ \pm $  \\ \hline
+	\end{tabular}
+\end{center}
+
+\FloatBarrier
 \chapter{Fazit}
 TODO: Fazit, mögliche Verbesserungen (Herstellung der Probe?)
 
