@@ -18,8 +18,9 @@
 % \usepackage[square]{natbib}
 % Paket zum Plotten von Datensätzen
 \usepackage{pgfplots}
-\pgfkeys{
-  /pgfplots/Streudaten/.style={
+\pgfkeys{%
+  /pgfplots/Streudaten/.style={%
+    /pgf/number format/use comma,
     legend pos=north east,
     xlabel=Streuvektor s in 1/nm,
     x tick label style={/pgf/number format/1000 sep=},
@@ -41,8 +42,9 @@
   }
 }
 
-\pgfkeys{
-  /pgfplots/Autokorrel/.style={
+\pgfkeys{%
+  /pgfplots/Autokorrel/.style={%
+    /pgf/number format/use comma,
     legend pos=north east,
     xlabel=u  in  nm,
     x tick label style={/pgf/number format/1000 sep=},
@@ -64,8 +66,9 @@
   }
 }
 
-\pgfkeys{
-  /pgfplots/tabh/.style={
+\pgfkeys{%
+  /pgfplots/tabh/.style={%
+    /pgf/number format/use comma,
     legend pos=north east,
     x tick label style={/pgf/number format/1000 sep=},
     xlabel=Unterkühlung in $K$,
@@ -121,7 +124,7 @@
 \usepackage{subcaption} %Für subfigures
 
 % PDF-Optionen
-\hypersetup{
+\hypersetup{%
   pdftitle={TU Darmstadt \- Physikalisches Praktikum für Fortgeschrittene},
   pdfauthor={Esra Bauer und Sören Link},
   pdfsubject={Versuch 3.21},
@@ -182,13 +185,13 @@ In diesem Versuch wird die Struktur von PET, einem Polymer, welcher uns in Form 
 \chapter{Grundlagen}
 \section{Polymere}
 
-Allgemein handelt es sich bei Polymeren um Makromoleküle, die aus Kettenmolekülen oder verzweigten Molekülen aufgebaut sind. Diese Makromoleküle können aus bis zu mehreren hunderttausend Bausteinen bestehen, die man Monomere nennt. Die Länge der Polymere bestimmt dabei den Polymerisationsgrad und man unterscheidet Thermoplasten, Duroplasten und Elastomere, wobei bei ersteren die Makromoleküle kettenförmig sind, bei den Duroplasten stärker und bei Elastomeren schwächer vernetzt. Die physikalischen Eigenschaften sind dementsprechend unterschiedlich: Elastomere sind elastisch dehnbar und Duroplasten auch bei höheren Temperaturen starr bzw. im Vergleich eher spröde. 
+Allgemein handelt es sich bei Polymeren um Makromoleküle, die aus Kettenmolekülen oder verzweigten Molekülen aufgebaut sind. Diese Makromoleküle können aus bis zu mehreren hunderttausend Bausteinen bestehen, die man Monomere nennt. Die Länge der Polymere bestimmt dabei den Polymerisationsgrad und man unterscheidet Thermoplasten, Duroplasten und Elastomere, wobei bei ersteren die Makromoleküle kettenförmig sind, bei den Duroplasten stärker und bei Elastomeren schwächer vernetzt. Die physikalischen Eigenschaften sind dementsprechend unterschiedlich: Elastomere sind elastisch dehnbar und Duroplasten auch bei höheren Temperaturen starr bzw.\ im Vergleich eher spröde. 
 
 Interessant sind für diesen Vesuch vor allem die Gruppe der Thermoplasten, zu denen auch das zu untersuchende PET gehört. Sie lassen sich, wie der Name sagt, einschmelzen und umformen. In der Schmelze liegen die Kettenmoleküle ungeordnet vor. Man spricht von einem Gaußschen Knäuel; der sog. Gyrationsradius ist proportional zur Wurzel des Molekulargewichts. Das Quadrat des Gyrationsradius ist definiert als der mittlere quadratische Abstand der Monomere zum Schwerpunkt des Polymers. Abhängig von der Abkühlgeschwindigkeit und -temperatur treten dann zwei wesentliche Übergänge auf: Der Glasübergang und (teilweise) Kristallisation.
 
 \section{Glasübergang}
 
-Kühlt man geschmolzene Thermoplasten schnell wieder ab, reicht die Zeit für die Kettenmoleküle, aus denen sie aufgebaut sind, nicht aus um sich regelmäßig anzuordnen, d.h. die Knäuelstruktur erstarrt und bleibt unregelmäßig. Es entsteht ein amorpher Festkörper, wie z.B. Fensterglas. Es handelt sich dabei nicht um einen thermodynamischen Phasenübergang, da keine fest definierte Temperatur für den Glasübergang existiert, sondern in der Realität ein allmählicher Übergang stattfindet, der zudem von der Abkühlgeschwindigkeit abhängt. Trägt man die einem Festkörper zugeführte Wärme $Q_{zu}$ über seiner Temperatur auf, wird dies als Aufweichung sichtbar:
+Kühlt man geschmolzene Thermoplasten schnell wieder ab, reicht die Zeit für die Kettenmoleküle, aus denen sie aufgebaut sind, nicht aus um sich regelmäßig anzuordnen, d.h.\ die Knäuelstruktur erstarrt und bleibt unregelmäßig. Es entsteht ein amorpher Festkörper, wie z.B. Fensterglas. Es handelt sich dabei nicht um einen thermodynamischen Phasenübergang, da keine fest definierte Temperatur für den Glasübergang existiert, sondern in der Realität ein allmählicher Übergang stattfindet, der zudem von der Abkühlgeschwindigkeit abhängt. Trägt man die einem Festkörper zugeführte Wärme $Q_{zu}$ über seiner Temperatur auf, wird dies als Aufweichung sichtbar:
 
 
 \begin{figure}[h] 
@@ -202,17 +205,17 @@ Im $Q_{zu}$-T-Diagramm kann der Glasübergang für eine ideale geringe Aufweichu
 
 \section{Kristallinität in Polymeren}
 
-Wenn man die Abkühlgeschwindigkeit senkt bzw. den geschmolzenen Thermoplasten einige Zeit bei konstanter Temperatur hält und die Voraussetzung gegeben ist, dass die Kristallisationstemperatur höher als die Glasübergangstemperatur liegt, können die Kettenmoleküle sich gebietsweise regelmäßig strukturieren. Man spricht dann von Kristallisation. Energetisch am günstigen wäre ein Zustand, in dem sämtliche Ketten vollständig entfaltet parallel aneinanderliegen würden. Dies lässt sich dadurch erklären, dass zwischen den Ketten Van-der-Waals-Kräfte wirken, die vor allem bei kleinem Teilchenabstand zum Tragen kommen und bei größerem Abstand vernachlässigbar schwach werden. Folglich erfährt eine Kette, die nicht parallel zur nächsten liegt, in der Regel Kräfte verschiedener anderer Ketten in verschiedene Richtungen, d.h. der Zustand ist nicht stabil. Liegen die Ketten allerdings parallel, wird die Van-der-Waals-Kraft pro Kette auf ihren Nachbarn maximal, da jedes Teilchen den kleinstmöglichen Abstand zum entsprechenden Teilchen der Nachbarkette hat.
+Wenn man die Abkühlgeschwindigkeit senkt bzw.\ den geschmolzenen Thermoplasten einige Zeit bei konstanter Temperatur hält und die Voraussetzung gegeben ist, dass die Kristallisationstemperatur höher als die Glasübergangstemperatur liegt, können die Kettenmoleküle sich gebietsweise regelmäßig strukturieren. Man spricht dann von Kristallisation. Energetisch am günstigen wäre ein Zustand, in dem sämtliche Ketten vollständig entfaltet parallel aneinanderliegen würden. Dies lässt sich dadurch erklären, dass zwischen den Ketten Van-der-Waals-Kräfte wirken, die vor allem bei kleinem Teilchenabstand zum Tragen kommen und bei größerem Abstand vernachlässigbar schwach werden. Folglich erfährt eine Kette, die nicht parallel zur nächsten liegt, in der Regel Kräfte verschiedener anderer Ketten in verschiedene Richtungen, d.h.\ der Zustand ist nicht stabil. Liegen die Ketten allerdings parallel, wird die Van-der-Waals-Kraft pro Kette auf ihren Nachbarn maximal, da jedes Teilchen den kleinstmöglichen Abstand zum entsprechenden Teilchen der Nachbarkette hat.
 
-Zunächst erfolgt eine Keimbildung, d.h. es bilden sich sog. Kristallite (lokale Ordnungszustände mit einer typischen Größe von 15-100 nm), in denen die Molekülketten großteils parallel liegen. Großteils deshalb, weil sich die langen Molekülketten, obwohl dies energetisch am günstigsten wäre, nicht vollständig entfalten können. In der Realität falten sich die Ketten und liegen an den Enden und Schlaufen oft ungeordnet vor. Diese Kristallite können nun weiter wachsen, wobei zu beachten ist, dass sie dies bevorzugt in eine ausgezeichnete Richtung tun, da zum einen an den Seiten, an denen die Schlaufen liegen, kein Wachstum stattfinden kann, da hier amporhe Bereiche außenliegend sind, und zum andern die Richtung des größten Temperaturgradienten bevorzugt wird. Somit wächst der Kristallit in die Länge, es entstehen sog. Lamellen, also längliche Kristallstrukturen, in denen die Molekülketten quer zur Längsachse der Lamellen angeordnet sind.
+Zunächst erfolgt eine Keimbildung, d.h.\ es bilden sich sog. Kristallite (lokale Ordnungszustände mit einer typischen Größe von 15-100 nm), in denen die Molekülketten großteils parallel liegen. Großteils deshalb, weil sich die langen Molekülketten, obwohl dies energetisch am günstigsten wäre, nicht vollständig entfalten können. In der Realität falten sich die Ketten und liegen an den Enden und Schlaufen oft ungeordnet vor. Diese Kristallite können nun weiter wachsen, wobei zu beachten ist, dass sie dies bevorzugt in eine ausgezeichnete Richtung tun, da zum einen an den Seiten, an denen die Schlaufen liegen, kein Wachstum stattfinden kann, da hier amporhe Bereiche außenliegend sind, und zum andern die Richtung des größten Temperaturgradienten bevorzugt wird. Somit wächst der Kristallit in die Länge, es entstehen sog. Lamellen, also längliche Kristallstrukturen, in denen die Molekülketten quer zur Längsachse der Lamellen angeordnet sind.
 
 Beim weiteren Wachstum muss unterschieden werden, unter welchem Temperaturbedingungen die Kristallisation erfolgt. Besteht ein starkes Temperaturgefälle, ordnen sich die Lamellen parallel an. Dies ist aber im Rahmen des Versuchs nicht weiter von Belang, da die Proben unter weitgehend isotropen Temperaturbedingen kristallisiert wurden, wobei sich die Lamellen radialsymmetrisch anordnen. Man spricht bei diesen radialsymmetrischen Strukturen von Sphärolithen. Eine vollständige Kristallisation ist in Polymeren nicht möglich, da bereits die Grundbausteine, die Kristallite, amorphe Randbereiche besitzen, an denen sich keine geordnete Struktur anlagern kann. Die Kristallisation lässt sich aber durch Additive signifikant steigern, auch Verunreinigungen und nicht ganz aufgeschmolzene kristalline Bestandteile können die Kristallisation verbessern.
 
 \section{Röntgenstreuung}
 
-Unter Röntgenstrahlung versteht man elektromagnetische Strahlung hoher Energie (zwischen 100 eV und einigen MeV), deren Wellenlängen entsprechend zwischen 10$^{-12}$ und 10$^{-8}$ liegen. Sie lässt sich beispielsweise mit einem Synchrotron oder einer Röntgenröhre erzeugen, wobei im Folgenden letztere verwendet wird und daher hier kurz auf die Funktionsweise eingegangen werden soll. Im Wesentlichen besteht die Röntgenröhre aus einer beheizten Kathode, die freie Elektronen erzeugt, sowie aus einer Anode, die gegenüber der Kathode eine Hochspannung von 40kV besitzt. Die Elektronen werden also zur Anode beschleunigt, was in zwei Arten von Strahlung resultiert, da zum einen Wechselwirkung der Elektronen mit dem elektromagnetischen Feld der Anode stattfindet, wobei die Elektronen abgelenkt bzw. gebremst werden (dies verursacht ein kontinuierliches Spektrum der sog. Bremsstrahlung), und zum andern die energiereicheren Elektronen Hüllenelektronen aus dem Anodematerial herausschlagen können. Der Effekt ist, dass ein Hüllenelektron der nächsten Schale nachrückt und genau die Energiedifferenz der beiden Schalen in Form von elektromagnetischer Strahlung frei wird. Es entsteht zusätzlich ein diskretes Spektrum der charakteristischen Röntgenstrahlung. Ein Übergang der L-Schale zur K-Schale wird dabei als $K_{\alpha}$-Linie bezeichnet, ein Übergang der M-Schale zur K-Schale als $K_{\beta}$-Linie usw. Die Lage der Linien sind dabei vom Anodenmaterial abhängig, welches in diesem Fall Kupfer ist. 
+Unter Röntgenstrahlung versteht man elektromagnetische Strahlung hoher Energie (zwischen 100 eV und einigen MeV), deren Wellenlängen entsprechend zwischen 10$^{-12}$ und 10$^{-8}$ liegen. Sie lässt sich beispielsweise mit einem Synchrotron oder einer Röntgenröhre erzeugen, wobei im Folgenden letztere verwendet wird und daher hier kurz auf die Funktionsweise eingegangen werden soll. Im Wesentlichen besteht die Röntgenröhre aus einer beheizten Kathode, die freie Elektronen erzeugt, sowie aus einer Anode, die gegenüber der Kathode eine Hochspannung von 40kV besitzt. Die Elektronen werden also zur Anode beschleunigt, was in zwei Arten von Strahlung resultiert, da zum einen Wechselwirkung der Elektronen mit dem elektromagnetischen Feld der Anode stattfindet, wobei die Elektronen abgelenkt bzw.\ gebremst werden (dies verursacht ein kontinuierliches Spektrum der sog. Bremsstrahlung), und zum andern die energiereicheren Elektronen Hüllenelektronen aus dem Anodematerial herausschlagen können. Der Effekt ist, dass ein Hüllenelektron der nächsten Schale nachrückt und genau die Energiedifferenz der beiden Schalen in Form von elektromagnetischer Strahlung frei wird. Es entsteht zusätzlich ein diskretes Spektrum der charakteristischen Röntgenstrahlung. Ein Übergang der L-Schale zur K-Schale wird dabei als $K_{\alpha}$-Linie bezeichnet, ein Übergang der M-Schale zur K-Schale als $K_{\beta}$-Linie usw. Die Lage der Linien sind dabei vom Anodenmaterial abhängig, welches in diesem Fall Kupfer ist. 
 
-Alle Messungen werden mit einer sog. Kratky-Kompakt-Kamera durchgeführt. Sie besteht aus einem evakuierbaren Gehäuse (Betriebsdruck ca. 38 mbar), welches einseitig auf der Röntgenröhre aufliegt und an der anderen Seite einen per Schrittmotor fein verschiebbaren Szintillationsdetektor vorgeschaltet hat. An beiden Enden ist das Gehäuse mit 0,25 mm dicken Berylliumfenstern verschlossen, die der Röntgenstrahl durchdringt. Vor der Strahlungsquelle befindet sich zunächst das Kollimationssystem, ein sog. Blockkollimationssystem, welches aus drei rechteckigen, genau geschliffenen Blöcken besteht, wobei zwei Blöcke den Strahl nach oben begrenzen und einer nach unten. Der Strahl passiert zuerst den Eingangspalt (dies ist der vertikale Abstand der in Strahlrichtung ersten beiden Blöcke, welcher auf etwa 80 µm eingestellt wird) und danach den letzten oberen Block, welcher gemeinsam mit dem mittleren Block die Strahlebenen bestimmt und Streustrahlung unterdrückt. So kollimiert, trifft der Strahl auf die Probe (bzw. passiert bei der ersten Messung den leeren Probenhalter) und wird dann auf das Austrittsfenster gestreut. Bei den Messungen mit Probe wird der Primärstrahl, d.h. der nicht gestreute Strahl, durch einen metallenen Beamstop blockiert, um ein direktes Auftreffen auf den Detektor zu verhindern, da dieser dadurch zerstört werden würde. Der Abstand der Probe zum Detektor beträgt 20 cm.
+Alle Messungen werden mit einer sog. Kratky-Kompakt-Kamera durchgeführt. Sie besteht aus einem evakuierbaren Gehäuse (Betriebsdruck ca. 38 mbar), welches einseitig auf der Röntgenröhre aufliegt und an der anderen Seite einen per Schrittmotor fein verschiebbaren Szintillationsdetektor vorgeschaltet hat. An beiden Enden ist das Gehäuse mit 0,25 mm dicken Berylliumfenstern verschlossen, die der Röntgenstrahl durchdringt. Vor der Strahlungsquelle befindet sich zunächst das Kollimationssystem, ein sog. Blockkollimationssystem, welches aus drei rechteckigen, genau geschliffenen Blöcken besteht, wobei zwei Blöcke den Strahl nach oben begrenzen und einer nach unten. Der Strahl passiert zuerst den Eingangspalt (dies ist der vertikale Abstand der in Strahlrichtung ersten beiden Blöcke, welcher auf etwa 80 µm eingestellt wird) und danach den letzten oberen Block, welcher gemeinsam mit dem mittleren Block die Strahlebenen bestimmt und Streustrahlung unterdrückt. So kollimiert, trifft der Strahl auf die Probe (bzw.\ passiert bei der ersten Messung den leeren Probenhalter) und wird dann auf das Austrittsfenster gestreut. Bei den Messungen mit Probe wird der Primärstrahl, d.h.\ der nicht gestreute Strahl, durch einen metallenen Beamstop blockiert, um ein direktes Auftreffen auf den Detektor zu verhindern, da dieser dadurch zerstört werden würde. Der Abstand der Probe zum Detektor beträgt 20 cm.
 
 \section{Streuung an zweiphasigen Schichtsystemen}
 TODO: Autokorrelationsfunktion, Invariante Q, Herleitung (wie in vorbesprechung), Abweichung Tatsächliche Korrelationsfunktion von einer für ein idealisiertes System
@@ -309,7 +312,7 @@ table[x index={0},y index={1}] {data/beamprofile2.bp};
 \end{center}
 
 \section{PET-Streudaten}
-Mit Hilfe des Primärstralprofils und der Wanderspaltmessungen lassen sich die gemessenen Streudaten entschmieren, wodurch der Einfluss des nicht perfekt rechteckigen Strahlprofils herausrechnen lässt. Nach Entschmierung leifert das verwendete Messprogramm eine .phg Datei, welche den Streuvektor q in inversen Angström, die Intensität in $e/nm^{3}$ und den Fehler der Inensität beinhaltet. Zur Darstellung und weiteren Verarbeitunt der Streudaten ist es vom Vorteil, den Streuvektor q in $s=\frac{q}{2\pi}$ umzurechnen und die Intensität mit $s^{2}$ multipliziert darzustellen.
+Mit Hilfe des Primärstralprofils und der Wanderspaltmessungen lassen sich die gemessenen Streudaten entschmieren, wodurch der Einfluss des nicht perfekt rechteckigen Strahlprofils herausrechnen lässt. Nach Entschmierung leifert das verwendete Messprogramm eine \.phg Datei, welche den Streuvektor q in inversen Angström, die Intensität in $e/nm^{3}$ und den Fehler der Inensität beinhaltet. Zur Darstellung und weiteren Verarbeitunt der Streudaten ist es vom Vorteil, den Streuvektor q in $s=\frac{q}{2\pi}$ umzurechnen und die Intensität mit $s^{2}$ multipliziert darzustellen.
 
 \begin{figure}[h]
 \begin{tikzpicture}
@@ -322,8 +325,8 @@ Mit Hilfe des Primärstralprofils und der Wanderspaltmessungen lassen sich die g
 \addlegendentry{Streudaten}
 \addplot[green, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-140-fitPoints.rel};
 \addlegendentry{Untergrund}
-\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {8.88877 + 53.2782*x};
-\addlegendentry{Fitgerade}
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {225.817 * x^2};
+\addlegendentry{Fitparabel}
 \end{axis}
 
 \begin{axis}[
@@ -337,8 +340,8 @@ Mit Hilfe des Primärstralprofils und der Wanderspaltmessungen lassen sich die g
 \addlegendentry{Streudaten}
 \addplot[green, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-170-fitPoints.rel};
 \addlegendentry{Untergrund}
-\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {28.6315 - 18.414*x};
-\addlegendentry{Fitgerade}
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {186.428 * x^2};
+\addlegendentry{Fitparabel}
 \end{axis}
 
 \begin{axis}[
@@ -353,8 +356,8 @@ Mit Hilfe des Primärstralprofils und der Wanderspaltmessungen lassen sich die g
 \addlegendentry{Streudaten}
 \addplot[green, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-200-fitPoints.rel};
 \addlegendentry{Untergrund}
-\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {26.2496 - 13.8354*x};
-\addlegendentry{Fitgerade}
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {191.321 * x^2};
+\addlegendentry{Fitparabel}
 \end{axis}
 
 \begin{axis}[
@@ -368,36 +371,34 @@ Mit Hilfe des Primärstralprofils und der Wanderspaltmessungen lassen sich die g
 \addlegendentry{Streudaten}
 \addplot[green, only marks, mark=x, mark size=2pt] table[x index=0,y index=1] {data/PET-215-fitPoints.rel};
 \addlegendentry{Untergrund}
-\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {-4.30741 + 85.2084*x};
-\addlegendentry{Fitgerade}
+\addplot[blue, mark=x, mark size=0pt, samples=20, domain=0:0.44] {208.726 * x^2};
+\addlegendentry{Fitparabel}
 \end{axis}
 
 \end{tikzpicture}
-\captionof{figure}{Streudaten der nicht von uns selbst hergestellten Proben. Zu erkennen ist ein von der Kristallisationstemperatur der Probe abhängender Peak und ein anschließender, annähernd linear Anstieg der gemessenen Intensität.}
+\captionof{figure}{Streudaten der nicht von uns selbst hergestellten Proben. Zu erkennen ist ein von der Kristallisationstemperatur der Probe abhängender Peak und ein anschließender, annähernd parabelförmiger Anstieg der gemessenen Intensität.}
 \end{figure}
 
 \FloatBarrier
 
-Wie an den Graphen zu erkennen ist, liegt in den gemessenen Daten eine gewisse Untergrundstrahlung vor, die annähernd linear zum Streuvektor zunimmt. Um die Messdaten weiter verarbeiten zu können, muss dieser Untergrund herausgerechnet werden. Dazu haben wir einen linearen fit durch die Messdaten nach dem eigentlichen Peak gelegt (in den Graphen in grün gekennzeichnet) und von den gemessenen Daten abgezogen.
-
-Der in der Versuchsanleitung angegebener parabelförmiger Verlauf des Untergrundes konnte von uns nicht bestätigt werden. Versuche, einen Parabel-Fit an die gemessenen Daten zu legen haben keine verwertbaren Ergebnisse geliefert.
+Wie an den Graphen zu erkennen ist, liegt in den gemessenen Daten eine gewisse Untergrundstrahlung vor, die parabelförmig zum Streuvektor zunimmt. Um die Messdaten weiter verarbeiten zu können, muss dieser Untergrund herausgerechnet werden. Dazu haben wir einen quadratischen fit durch die Messdaten und den Ursprung nach dem eigentlichen Peak gelegt (in den Graphen in grün gekennzeichnet) und von den gemessenen Daten abgezogen.
 
 \subsection{Fitwerte}
-Zur Bestimmung des Untergrunds haben wir eine Gerade der Form $f(x) = a \cdot x + b$ an die Streudaten hinter dem Peak angefittet. Die für den Fit verwendete Messdaten sind in den oben dargestellten Graphen grün markiert.
+Zur Bestimmung des Untergrunds haben wir eine Gerade der Form $f(x) = a \cdot x^2$ an die Streudaten hinter dem Peak angefittet. Die für den Fit verwendete Messdaten sind in den oben dargestellten Graphen grün markiert.
 
 \begin{center}
-  \begin{tabular}{|p{7cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}|p{2.2cm}|}
+  \begin{tabular}{|p{7cm}|p{2.2cm}|p{2.2cm}|}
     \hline
-    Kristallisierungstemperatur der Probe & a        & Fehler $\Delta$a & b & Fehler $\Delta$b  \\ \hline
-    140                                   & 53,3     & 41,7        & 8,9      & 13,5    \\ \hline
-    170                                   & -18,4    & 42,6        & 28,6     & 13,6    \\ \hline
-    170 (selbst getempert)                & -22,6    & 42          & 22,2     & 12,9    \\ \hline
-    200                                   & -13,8    & 35,6        & 26,2     & 10,7    \\ \hline
-    215                                   & 85,2     & 33,8        & -4,3     & 10,2    \\ \hline
+    Kristallisierungstemperatur der Probe & a     & Fehler $\Delta$a  \\ \hline
+    140                                   & 225,8 & 25,6              \\ \hline
+    170                                   & 186,4 & 31,3              \\ \hline
+    170 (selbst getempert)                & 132,4 & 33,4              \\ \hline
+    200                                   & 191,3 & 32,9               \\ \hline
+    215                                   & 208,7 & 25,7              \\ \hline
 	\end{tabular}
 \end{center}
 
-Aufgrund der sehr hohen Streuung der hinteren Messwerte sind die resultierenden Fits wie erwartet mit einem sehr großen Fehler behaftet.
+Aufgrund der sehr hohen Streuung der hinteren Messwerte sind die resultierenden Fits wie erwartet mit einem relativ großen Fehler behaftet.
 
 
 \section{Eindimensionale Korrelationsfunkton}
@@ -408,7 +409,7 @@ Dazu wird durch den anfänglich linear abfallenden Teil eine Fitgerade gelegt. D
 \begin{figure}[h]
 \begin{tikzpicture}
 \begin{axis}[
-  title={Autokor. für PET Kristall. bei 140°C},
+  title={Autokor.\ für PET Kristall bei 140°C},
   Autokorrel,
   name=first
 ]
@@ -426,7 +427,7 @@ Dazu wird durch den anfänglich linear abfallenden Teil eine Fitgerade gelegt. D
 
 
 \begin{axis}[
-  title={Autokor. für PET Kristall. bei 170°C},
+  title={Autokor.\ für PET Kristall bei 170°C},
   Autokorrel,
   name=second,
   at=(first.outer south east),
@@ -444,7 +445,7 @@ Dazu wird durch den anfänglich linear abfallenden Teil eine Fitgerade gelegt. D
 \end{axis}
 
 \begin{axis}[
-  title={Autokor. für eigenen PET Kristall. bei 170°C},
+  title={Autokor/. für eigenen PET Kristall bei 170°C},
   Autokorrel,
   name=third,
   at=(first.outer south west),
@@ -463,7 +464,7 @@ Dazu wird durch den anfänglich linear abfallenden Teil eine Fitgerade gelegt. D
 \end{axis}
 
 \begin{axis}[
-  title={Autokor. für PET Kristall. bei 200°C},
+  title={Autokor.\ für PET Kristall bei 200°C},
   Autokorrel,
   name=fourth,
   at=(third.outer south east),
@@ -481,7 +482,7 @@ Dazu wird durch den anfänglich linear abfallenden Teil eine Fitgerade gelegt. D
 \end{axis}
 
 \begin{axis}[
-  title={Autokor. für PET Kristall. bei 215°C},
+  title={Autokor.\ für PET Kristall bei 215°C},
   Autokorrel,
   name=fith,
   at=(third.outer south west),
@@ -520,7 +521,7 @@ Dazu wird durch den anfänglich linear abfallenden Teil eine Fitgerade gelegt. D
 \end{axis}
 
 \end{tikzpicture}
-\captionof{figure}{Autokorrelationsfunktionen der untersuchten Proben. Mit hilfe eines linearen fits im vorderen Bereich der Funktion lassen sich Werte für Q und $d_c$ bestimmen. der Wert für $d_{ac}$ ergibt sich aus der Position des ersten lokalen Maximums}
+\captionof{figure}{Autokorrelationsfunktionen der untersuchten Proben. Mit hilfe eines linearen fits im vorderen Bereich der Funktion lassen sich Werte für Q und $d_c$ bestimmen. Der Wert für $d_{ac}$ ergibt sich aus der Position des ersten lokalen Maximums}
 \end{figure}
 \FloatBarrier
 Aus den Autokorrelationsfunktionen lassen sich folgende Werte für die uns zur verfügung stehenden Proben entnehmen:
@@ -544,25 +545,25 @@ Man kann nun sowohl die Kristallitdicke als auch die Langperiode gegenüber der 
 \begin{figure}[h]
 \begin{tikzpicture}
 \begin{axis}[
-  title={Kristallitdicke in abh. der Temperaturdifferenz},
+  title={Kristallitdicke in Abh.\ der Temperaturdifferenz},
   ylabel=Kristallitdicke in $nm$,
   tabh,
   name=first
 ]
 \addplot[red, only marks, mark=x, mark size=2pt, 
   error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
-  coordinates{
-  (62.85,4.561) +- (0.5, 0.066)
-};
+  coordinates{%
+    (62.85,4.561) +- (0.5, 0.066)
+  };
 \addlegendentry{Selbst erstellte Probe}
 \addplot[blue, only marks, mark=x, mark size=2pt, 
   error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
-  coordinates{
-  (17.85,4.865) +- (0.5, 0.073)
-  (32.85,4.456) +- (0.5, 0.057)
-  (62.85,3.951) +- (0.5, 0.045)
-  (92.85,3.402) +- (0.5, 0.047)
-};
+  coordinates{%
+    (17.85,4.865) +- (0.5, 0.073)
+    (32.85,4.456) +- (0.5, 0.057)
+    (62.85,3.951) +- (0.5, 0.045)
+    (92.85,3.402) +- (0.5, 0.047)
+  };
 \addlegendentry{Gestellte Proben}
 
 \addplot[black, mark=x, mark size=0pt, samples=20, domain=0:20] {3.34196 + 29.2207/x};
@@ -572,7 +573,7 @@ Man kann nun sowohl die Kristallitdicke als auch die Langperiode gegenüber der 
 
 
 \begin{axis}[
-  title={Langperiode in abh. der Temperaturdifferenz},
+  title={Langperiode in Abh.\ der Temperaturdifferenz},
   tabh,
   ylabel=Langperiode in $nm$,
   ymin=8,
@@ -583,18 +584,18 @@ Man kann nun sowohl die Kristallitdicke als auch die Langperiode gegenüber der 
 ]
 \addplot[red, only marks, mark=x, mark size=2pt, 
   error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
-  coordinates{
-  (62.85,12.633) +- (0.5, 0.632)
-};
+  coordinates{%
+    (62.85,12.633) +- (0.5, 0.632)
+  };
 \addlegendentry{Selbst erstellte Probe}
 \addplot[blue, only marks, mark=x, mark size=2pt, 
   error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
-  coordinates{
-  (92.85, 9.625) +- (0.5, 0.481)
-  (62.85,10.829) +- (0.5, 0.541)
-  (32.85,12.633) +- (0.5, 0.632)
-  (17.85,15.040) +- (0.5, 0.752)
-};
+  coordinates{%
+    (92.85, 9.625) +- (0.5, 0.481)
+    (62.85,10.829) +- (0.5, 0.541)
+    (32.85,12.633) +- (0.5, 0.632)
+    (17.85,15.040) +- (0.5, 0.752)
+  };
 \addlegendentry{Gestellte Proben}
 
 \addplot[black, mark=x, mark size=0pt, samples=20, domain=0:20] {5.62831 + 39.9539/x^0.5};
@@ -616,13 +617,15 @@ Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristall
 \begin{figure}[h]
 \begin{tikzpicture}
 \begin{axis}[
-  title={Kristallinität in Abh. der Kristallisationstemperatur},
+  title={Kristallinität in Abh.\ der Kristallisationstemperatur},
+  /pgf/number format/use comma,
   ylabel=Kristallinität,
   legend pos=south east,
   x tick label style={/pgf/number format/1000 sep=},
-  xlabel=Kristallisationstemperatur in °C
+  xlabel=Kristallisationstemperatur in °C,
   y tick label style={/pgf/number format/1000 sep=},
-  width=0.9\linewidth,
+  yticklabel style={/pgf/number format/fixed},
+  width=0.85\linewidth,
   height=0.5\linewidth,
   scale only axis,
   xmin=100,
@@ -638,18 +641,18 @@ Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristall
 ]
 \addplot[red, only marks, mark=x, mark size=2pt, 
   error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
-  coordinates{
-  (170,0.117)   +- (0.5, 0.005)
-};
+    coordinates{%
+    (170,0.117)   +- (0.5, 0.005)
+  };
 \addlegendentry{Selbst erstellte Probe}
 \addplot[blue, only marks, mark=x, mark size=2pt, 
   error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
-  coordinates{
-  (140,0.113) +- (0.5, 0.004)
-  (170,0.123) +- (0.5, 0.004)
-  (200,0.134) +- (0.5, 0.005)
-  (215,0.106) +- (0.5, 0.003)
-};
+  coordinates{%
+    (140,0.113) +- (0.5, 0.004)
+    (170,0.123) +- (0.5, 0.004)
+    (200,0.134) +- (0.5, 0.005)
+    (215,0.106) +- (0.5, 0.003)
+  };
 \addlegendentry{Gestellte Proben}
 
 \addplot[black, mark=x, mark size=0pt, samples=60, domain=100:230] {-0.305912 + 0.00491231*x - 0.0000138191*x^2};
