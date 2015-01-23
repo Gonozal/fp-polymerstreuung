@@ -228,7 +228,7 @@ Bei dem Material, welches in diesem Versuch untersucht wird, handelt es sich um 
 
 Bei der Schmelze ist zu beachten, dass das PET verläuft und man deswegen die Menge nicht zu reichlich bemessen sollte, da es sonst aus der Aussparung überläuft, was in der Tat auch beinahe geschehen ist. Zudem hat sich gegen Ende der Schmelze eine bräunliche Verfärbung eingestellt, was zwei Gründe haben kann; zum einen hat der Schmelzvorgang deutlich länger angedauert als im Anleitungsblatt empfohlen, zum andern ist die Temperatur teilweise knapp über 300 $^{\circ}$C angestiegen. Zur Schmelzdauer ist zu sagen, dass die im Anleitungsblatt empfohlenen 5 Minuten etwas knapp bemessen sind, da die Wärmeleitung zwischen der Heizplatte und dem Probenhalter dazu nicht ausreicht, allerdings hat die tatsächliche Schmelze etwa 45 Minuten angedauert, was vermutlich wiederum zu lang ist (ideal sollten ca. 15-20 Minuten sein). Um die Temperatur konstant zu halten, ist es außerdem erforderlich, die Heizleistung der Platte nachzuregeln.
 
-\section{Bestimmung des Primärstrahlprofils}
+\section{Bestimmung der Positions des Primärstrahls}
 
 Vor Beginn der eigentlichem Messung ist es notwendig, die Intensitätsverteilung des Primärstrahls zu bestimmen, da die Strichkollimation zwar gegenüber der Punktkollimation den Vorteil der generell höheren Intensität besitzt, jedoch das Strahlprofil nicht genau rechteckig ist, sondern abgerundet und zu den Rändern allmählich ausläuft. Aus diesem Grund müssen wir also zuerst eine Messung ohne Probe und ohne Primärstrahlfänger durchführen. Da ohne weitere Maßnahmen damit der empfindliche Szintillitationsdetektor zerstört werden würde, schalten wir den Messingabsorber vor die Strahlungsquelle dazu, der Strahl wird insgesamt also stark abgeschwächt. Zusätzlich montieren wir einen horizontalen Spalt mit einer Breite von 200 µm vor den Detektor. Das Innere der Kratky-Kamera wird anschließend evakuiert und eine winkelabhängige Messung der Intensität gestartet. 
 
@@ -404,7 +404,7 @@ Aufgrund der sehr hohen Streuung der hinteren Messwerte sind die resultierenden 
 \section{Eindimensionale Korrelationsfunkton}
 Die um den linearen Anteil korrigierten Streudaten können nun mit Hilfe des Programms "`CORREL1"' mittels Furiertransformation in eine Autokorrelationsfunktion umgerechnet werden. Mit Hilfe dieser Funktion ist es möglich, werte Für $Q$, $d_c$ und $d_{ac}$ für die einzelnen Probem zu bestimmen.
 
-Dazu wird durch den anfänglich linear abfallenden Teil eine Fitgerade gelegt. Der y-Achsenabschnitt dieser Gerade gibt uns den Wert für Q, welcher sich in den gesuchten Wert $\Phi_c$ für die Kristallinität der Probe umrechnen lässt. Den Wert für $d_c$ ist der x-Wert des Schnittpunktes der fitgeraden mit einer Konstanten, die durch den tiefsten Punkt der Autokorrelationsfunktion verläuft. Den Wert für $d_{ac}$ erhält man aus dem x-Wert des ersten lokalen Maximums der Autokorrelationsfunktion.
+Dazu wird durch den anfänglich linear abfallenden Teil eine Fitgerade gelegt. Der y-Achsenabschnitt dieser Gerade gibt uns den Wert für Q, welcher sich in den gesuchten Wert $\Phi_c$ für die Kristallinität der Probe umrechnen lässt. Den Wert für $d_c$ ist der x-Wert des Schnittpunktes der fitgeraden mit einer Konstanten, die durch den tiefsten Punkt der Autokorrelationsfunktion verläuft. Den Wert für $d_{ac}$ erhält man aus dem x-Wert des ersten lokalen Maximums der Elektronendichte-Autokorrelationsfunktion.
 
 \begin{figure}[h]
 \begin{tikzpicture}
