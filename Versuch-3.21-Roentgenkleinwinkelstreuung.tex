@@ -585,21 +585,21 @@ Man kann nun sowohl die Kristallitdicke als auch die Langperiode gegenüber der 
 \addplot[red, only marks, mark=x, mark size=2pt, 
   error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
   coordinates{%
-    (62.85,12.633) +- (0.5, 0.632)
+    (62.85,12.6) +- (0.5, 0.6)
   };
 \addlegendentry{Selbst erstellte Probe}
 \addplot[blue, only marks, mark=x, mark size=2pt, 
   error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
   coordinates{%
-    (92.85, 9.625) +- (0.5, 0.481)
-    (62.85,10.829) +- (0.5, 0.541)
-    (32.85,12.633) +- (0.5, 0.632)
-    (17.85,15.040) +- (0.5, 0.752)
+    (92.85, 9.6) +- (0.5, 0.4)
+    (62.85,10.8) +- (0.5, 0.6)
+    (32.85,13.2) +- (0.5, 0.7)
+    (17.85,15) +- (0.5, 0.8)
   };
 \addlegendentry{Gestellte Proben}
 
-\addplot[black, mark=x, mark size=0pt, samples=20, domain=0:20] {5.62831 + 39.9539/x^0.5};
-\addplot[black, mark=x, mark size=0pt, samples=40, domain=20:100] {5.62831 + 39.9539/x^0.5};
+\addplot[black, mark=x, mark size=0pt, samples=20, domain=0:20] {5.63251 + 40.6655/x^0.5};
+\addplot[black, mark=x, mark size=0pt, samples=40, domain=20:100] {5.63251 + 40.6655/x^0.5};
 \addlegendentry{Fit-Kurve}
 \end{axis}
 \end{tikzpicture}
@@ -620,7 +620,7 @@ Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristall
   title={Kristallinität in Abh.\ der Kristallisationstemperatur},
   /pgf/number format/use comma,
   ylabel=Kristallinität,
-  legend pos=south east,
+  legend pos=south west,
   x tick label style={/pgf/number format/1000 sep=},
   xlabel=Kristallisationstemperatur in °C,
   y tick label style={/pgf/number format/1000 sep=},
@@ -628,11 +628,11 @@ Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristall
   width=0.85\linewidth,
   height=0.5\linewidth,
   scale only axis,
-  xmin=100,
-  xmax=230,
+  xmin=405,
+  xmax=495,
   grid=both,
-  ymin=0,
-  ymax=0.15,
+  ymin=0.10,
+  ymax=0.20,
   tick align=outside,
   tickpos=left,
   minor x tick num=3,
@@ -642,20 +642,20 @@ Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristall
 \addplot[red, only marks, mark=x, mark size=2pt, 
   error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
     coordinates{%
-    (170,0.117)   +- (0.5, 0.005)
+    (170+273.15,0.164)   +- (0.5, 0.007)
   };
 \addlegendentry{Selbst erstellte Probe}
 \addplot[blue, only marks, mark=x, mark size=2pt, 
   error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
   coordinates{%
-    (140,0.113) +- (0.5, 0.004)
-    (170,0.123) +- (0.5, 0.004)
-    (200,0.134) +- (0.5, 0.005)
-    (215,0.106) +- (0.5, 0.003)
+    (140+273.15,0.141) +- (0.5, 0.005)
+    (170+273.15,0.180) +- (0.5, 0.007)
+    (200+273.15,0.182) +- (0.5, 0.010)
+    (215+273.15,0.105) +- (0.5, 0.003)
   };
 \addlegendentry{Gestellte Proben}
 
-\addplot[black, mark=x, mark size=0pt, samples=60, domain=100:230] {-0.305912 + 0.00491231*x - 0.0000138191*x^2};
+\addplot[black, mark=x, mark size=0pt, samples=60, domain=400:500] {1.44075 * exp(-(23.1857/(506 - x)) - 251.81/(-293 + x))};
 \addlegendentry{Fit-Kurve}
 \end{axis}
 \end{tikzpicture}
