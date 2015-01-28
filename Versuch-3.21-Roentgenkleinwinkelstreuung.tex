@@ -529,12 +529,12 @@ Aus den Autokorrelationsfunktionen lassen sich folgende Werte für die uns zur v
 \begin{center}
   \begin{tabular}{|p{4.5cm}|p{2.6cm}|p{2.6cm}|p{2.6cm}|p{2.6cm}|}
     \hline
-    Kristallisierungstemperatur der Probe in °C & $d_c$ in $nm$   & $d_{ac}$ in $nm$ & $Q$         & $ \Phi_c$         \\ \hline
-    140                                         & $3,27 \pm 0,04$ & $ 9,6 \pm 0,5$   & $171 \pm 5$ & $0,141 \pm 0,005$ \\ \hline
-    170                                         & $3,77 \pm 0,06$ & $10,8 \pm 0,5$   & $208 \pm 8$ & $0,180 \pm 0,009$ \\ \hline
-    170 (selbst getempert)                      & $4,36 \pm 0,06$ & $12,6 \pm 0,6$   & $194 \pm 6$ & $0,164 \pm 0,007$ \\ \hline
-    200                                         & $4,28 \pm 0,07$ & $13,2 \pm 0,7$   & $210 \pm 8$ & $0,182 \pm 0,010$ \\ \hline
-    215                                         & $4,89 \pm 0,06$ & $15,0 \pm 0,8$   & $132 \pm 4$ & $0,105 \pm 0,003$ \\ \hline
+    Kristallisierungstemperatur der Probe in °C & $d_c$ in $nm$   & $d_{ac}$ in $nm$ & $Q$         & $ \Phi_c in \%$ \\ \hline
+    140                                         & $3,27 \pm 0,04$ & $ 9,6 \pm 0,5$   & $171 \pm 5$ & $14,1 \pm 0,5$  \\ \hline
+    170                                         & $3,77 \pm 0,06$ & $10,8 \pm 0,5$   & $208 \pm 8$ & $18,0 \pm 0,9$  \\ \hline
+    170 (selbst getempert)                      & $4,36 \pm 0,06$ & $12,6 \pm 0,6$   & $194 \pm 6$ & $16,4 \pm 0,7$  \\ \hline
+    200                                         & $4,28 \pm 0,07$ & $13,2 \pm 0,7$   & $210 \pm 8$ & $18,2 \pm 1,0$  \\ \hline
+    215                                         & $4,89 \pm 0,06$ & $15,0 \pm 0,8$   & $132 \pm 4$ & $10,5 \pm 0,3$  \\ \hline
 	\end{tabular}
 \end{center}
 
@@ -612,7 +612,7 @@ Für die uns gestellten Proben passt die erwartete $\frac{1}{\sqrt{T}}$ Abhängi
 
 \clearpage{}
 
-Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristallisationstemperatur haben wir einen parabelförmigen Fit durch die uns zur Verfügung stehenden Messdaten gelegt. 
+Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristallisationstemperatur haben wir einen Fit der Form $\Phi(T) = a \cdot e^{-\frac{B_0}{T^{\infty}_{f}-T}-\frac{T_A}{T-T_V}}$ \cite{anleitung} durch die uns zur Verfügung stehenden Messdaten gelegt. Für $T^{\infty}_{f}$ haben wir den Schmelzpunkt von $T_s = 506K$ des Materials und für $T_V$ haben wir $T_G - 50K = 293K$ angenommen. Für die Aktivierungstemperatur $T_A$ haben wir zuerst gemäß der Versuchsanleitung Werte zwischen $1000K$ und $2000K$ verwendet, da uns ein Literaturwert nicht zur Verfügung stand. Das erste Diagramm zeigt einen Fit für $T_A = 1500K$, welcher jedoch nicht die gemessenen Werte widerspiegelt. Aus diesem Grund haben wir einen weiteren Fit mit $T_A$ als zusätzlichen Fitparameter erstellt
 
 \begin{figure}[h]
 \begin{tikzpicture}
@@ -620,15 +620,63 @@ Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristall
   title={Kristallinität in Abh.\ der Kristallisationstemperatur},
   /pgf/number format/use comma,
   ylabel=Kristallinität,
-  legend pos=south west,
+  legend pos=north east,
   x tick label style={/pgf/number format/1000 sep=},
-  xlabel=Kristallisationstemperatur in °C,
+  xlabel=Kristallisationstemperatur in K,
   y tick label style={/pgf/number format/1000 sep=},
   yticklabel style={/pgf/number format/fixed},
   width=0.85\linewidth,
   height=0.5\linewidth,
   scale only axis,
-  xmin=405,
+  xmin=410,
+  xmax=500,
+  grid=both,
+  ymin=0.04,
+  ymax=0.28,
+  tick align=outside,
+  tickpos=left,
+  minor x tick num=3,
+  minor y tick num=4,
+  minor grid style={dotted,thin}
+]
+\addplot[red, only marks, mark=x, mark size=2pt, 
+  error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
+    coordinates{%
+    (170+273.15,0.164)   +- (0.5, 0.007)
+  };
+\addlegendentry{Selbst erstellte Probe}
+\addplot[blue, only marks, mark=x, mark size=2pt, 
+  error bars/.cd, y dir=both,y explicit, x dir=both,x explicit]
+  coordinates{%
+    (140+273.15,0.141) +- (0.5, 0.005)
+    (170+273.15,0.180) +- (0.5, 0.007)
+    (200+273.15,0.182) +- (0.5, 0.010)
+    (215+273.15,0.105) +- (0.5, 0.003)
+  };
+\addlegendentry{Gestellte Proben}
+
+\addplot[black, mark=x, mark size=0pt, samples=60, domain=400:500] {21924.3 * e^(-(107.068/(506-x))-1500/(-293+x))};
+\addlegendentry{Fitkurve}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Starke Diskrepanz zwischen Fitkurve und gemessenen Daten bei angenommener Aktivierungstemperatur von $T_A = 1500K$, ein ähnlicher Verlauf findet sich für andere Werte von $T_A$ zwischen $1000K$ und $2000K$}
+\end{figure}
+
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{axis}[
+  title={Kristallinität in Abh.\ der Kristallisationstemperatur},
+  /pgf/number format/use comma,
+  ylabel=Kristallinität,
+  legend pos=south east,
+  x tick label style={/pgf/number format/1000 sep=},
+  xlabel=Kristallisationstemperatur in K,
+  y tick label style={/pgf/number format/1000 sep=},
+  yticklabel style={/pgf/number format/fixed},
+  width=0.85\linewidth,
+  height=0.5\linewidth,
+  scale only axis,
+  xmin=410,
   xmax=495,
   grid=both,
   ymin=0.10,
@@ -655,11 +703,11 @@ Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristall
   };
 \addlegendentry{Gestellte Proben}
 
-\addplot[black, mark=x, mark size=0pt, samples=60, domain=400:500] {1.44075 * exp(-(23.1857/(506 - x)) - 251.81/(-293 + x))};
+\addplot[black, mark=x, mark size=0pt, samples=60, domain=400:500] {1.44075 * e^(-(23.1857/(506-x))-251.81/(-293+x))};
 \addlegendentry{Fit-Kurve}
 \end{axis}
 \end{tikzpicture}
-\captionof{figure}{}
+\captionof{figure}{Wird $T_A$ als Fitparameter gewählt, ergibt sich mit $T_A = (251.81 \pm 51.1454)K$ eine deutliche Abdeckung mit den gemessenen Daten.}
 \end{figure}
 
 Auch hier passt der Datenpunkt der von uns hergestellten Probe nicht zum erwarteten Wert, wobei es sinnig erscheint, dass bei einem "`verbrennen"' der Probe die Kristallinität gegenüber einer sauber geschmolzenen Probe abnimmt.
@@ -710,6 +758,6 @@ Wir haben in diesem Versuch den Kristallisationsgrad von verschiedenen Polymerpr
 % Eintrag fürs Inhaltsverzeichnis
 \newpage
 \begin{thebibliography}{100}
-  \bibitem{GefahrenLaser} \url{http://de.wikipedia.org/w/index.php?title=Laser&oldid=128632514#Gefahren}
+  \bibitem{anleitung} \url{Versuchsanleitung}
 \end{thebibliography}
 \end{document}
