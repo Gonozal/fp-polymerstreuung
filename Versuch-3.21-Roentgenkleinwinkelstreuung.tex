@@ -211,6 +211,8 @@ Zunächst erfolgt eine Keimbildung, d.h.\ es bilden sich sog. Kristallite (lokal
 
 Beim weiteren Wachstum muss unterschieden werden, unter welchem Temperaturbedingungen die Kristallisation erfolgt. Besteht ein starkes Temperaturgefälle, ordnen sich die Lamellen parallel an. Dies ist aber im Rahmen des Versuchs nicht weiter von Belang, da die Proben unter weitgehend isotropen Temperaturbedingen kristallisiert wurden, wobei sich die Lamellen radialsymmetrisch anordnen. Man spricht bei diesen radialsymmetrischen Strukturen von Sphärolithen. Eine vollständige Kristallisation ist in Polymeren nicht möglich, da bereits die Grundbausteine, die Kristallite, amorphe Randbereiche besitzen, an denen sich keine geordnete Struktur anlagern kann. Die Kristallisation lässt sich aber durch Additive signifikant steigern, auch Verunreinigungen und nicht ganz aufgeschmolzene kristalline Bestandteile können die Kristallisation verbessern.
 
+Die Wachstumsrate der Kristallite ist durch $u \propto \cdot e^{-\frac{B_0}{T^{\infty}_{f}-T}-\frac{T_A}{T-T_V}}$ mit $B_0:$ Materialkonstante, $T^{\infty}_{f}-T:$ Gleichgewichtsschmelztemperatur, $T_V:$ Vogel-Temperatur, $T_A:$ Aktivierungstemperatur und $T:$ Temperatur der Probe beim Kristallisieren gegeben.
+
 \section{Röntgenstreuung}
 
 Unter Röntgenstrahlung versteht man elektromagnetische Strahlung hoher Energie (zwischen 100 eV und einigen MeV), deren Wellenlängen entsprechend zwischen 10$^{-12}$ und 10$^{-8}$ liegen. Sie lässt sich beispielsweise mit einem Synchrotron oder einer Röntgenröhre erzeugen, wobei im Folgenden letztere verwendet wird und daher hier kurz auf die Funktionsweise eingegangen werden soll. Im Wesentlichen besteht die Röntgenröhre aus einer beheizten Kathode, die freie Elektronen erzeugt, sowie aus einer Anode, die gegenüber der Kathode eine Hochspannung von 40kV besitzt. Die Elektronen werden also zur Anode beschleunigt, was in zwei Arten von Strahlung resultiert, da zum einen Wechselwirkung der Elektronen mit dem elektromagnetischen Feld der Anode stattfindet, wobei die Elektronen abgelenkt bzw.\ gebremst werden (dies verursacht ein kontinuierliches Spektrum der sog. Bremsstrahlung), und zum andern die energiereicheren Elektronen Hüllenelektronen aus dem Anodematerial herausschlagen können. Der Effekt ist, dass ein Hüllenelektron der nächsten Schale nachrückt und genau die Energiedifferenz der beiden Schalen in Form von elektromagnetischer Strahlung frei wird. Es entsteht zusätzlich ein diskretes Spektrum der charakteristischen Röntgenstrahlung. Ein Übergang der L-Schale zur K-Schale wird dabei als $K_{\alpha}$-Linie bezeichnet, ein Übergang der M-Schale zur K-Schale als $K_{\beta}$-Linie usw. Die Lage der Linien sind dabei vom Anodenmaterial abhängig, welches in diesem Fall Kupfer ist. 
@@ -218,9 +220,36 @@ Unter Röntgenstrahlung versteht man elektromagnetische Strahlung hoher Energie 
 Alle Messungen werden mit einer sog. Kratky-Kompakt-Kamera durchgeführt. Sie besteht aus einem evakuierbaren Gehäuse (Betriebsdruck ca. 38 mbar), welches einseitig auf der Röntgenröhre aufliegt und an der anderen Seite einen per Schrittmotor fein verschiebbaren Szintillationsdetektor vorgeschaltet hat. An beiden Enden ist das Gehäuse mit 0,25 mm dicken Berylliumfenstern verschlossen, die der Röntgenstrahl durchdringt. Vor der Strahlungsquelle befindet sich zunächst das Kollimationssystem, ein sog. Blockkollimationssystem, welches aus drei rechteckigen, genau geschliffenen Blöcken besteht, wobei zwei Blöcke den Strahl nach oben begrenzen und einer nach unten. Der Strahl passiert zuerst den Eingangspalt (dies ist der vertikale Abstand der in Strahlrichtung ersten beiden Blöcke, welcher auf etwa 80 µm eingestellt wird) und danach den letzten oberen Block, welcher gemeinsam mit dem mittleren Block die Strahlebenen bestimmt und Streustrahlung unterdrückt. So kollimiert, trifft der Strahl auf die Probe (bzw.\ passiert bei der ersten Messung den leeren Probenhalter) und wird dann auf das Austrittsfenster gestreut. Bei den Messungen mit Probe wird der Primärstrahl, d.h.\ der nicht gestreute Strahl, durch einen metallenen Beamstop blockiert, um ein direktes Auftreffen auf den Detektor zu verhindern, da dieser dadurch zerstört werden würde. Der Abstand der Probe zum Detektor beträgt 20 cm.
 
 \section{Streuung an zweiphasigen Schichtsystemen}
-TODO: Autokorrelationsfunktion, Invariante Q, Herleitung (wie in vorbesprechung), Abweichung Tatsächliche Korrelationsfunktion von einer für ein idealisiertes System
+In einem idealen zweiphasigen Schichtsystem wechseln sich amorphe und kristalline Bereiche periodisch ab, wobei die Dichten in den jeweiligen Schichten als konstant und die Übergänge zwischen beiden Schichten als infinitesimal klein angenommen werden.
 
+\begin{figure}[h] 
+  \centering
+     \includegraphics[width=0.4\textwidth]{img/uebergaenge.png}
+     \caption{Schematische Darstellung der Elektronendichte-Verteilung in einem idealen zweiphasigen Schichtsystem \cite{anleitung}.}
+\end{figure}
 
+Die Elektronendichte der kristallinen und Amorphen Bereiche ergibt sich direkt aus der Furiertransformation der Amplitude der gestreuten Röntgenstrahlung. Leider können wir die Amplitude nicht direkt messen, wir messen lediglich die Intensität der gestreuten Strahlung $I(q) = A(\vec{q}) \cdot A^{*}(\vec{q})$.
+
+Durch Einsetzen von $A(\vec{q}) = b_e \cdot \frac{A_0}{R} \int_{V} \rho(\vec{r}) \cdot e^{i\vec{q}\vec{r}}d\vec{r}$ \cite{anleitung} ergibt sich:
+
+\begin{align*}
+  I(q) &= b_{e}^{2} \cdot \frac{A_{0}^{2}}{R^2} \left( \int \rho(\vec{r}) \cdot e^{i\vec{q}\vec{r}}d\vec{r}\right) \left(\int \rho(\vec{r}^{\,\prime}) \cdot e^{-i\vec{q}\vec{r}^{\,\prime}}d\vec{r}^{\,\prime}\right),\\
+  \text{Substition} \ \vec{u} &= \vec{r}^{\,\prime} - \vec{r},\\
+  I(q) &= b_{e}^{2} \cdot \frac{I_{0}}{R^2} \int\left(\int \rho(\vec{r})\rho(\vec{u} + \vec{r}) d\vec{r}\right) \ e^{-i\vec{q}\vec{u}}d\vec{u},\\
+  I(q) &= b_{e}^{2} \cdot \frac{I_{0}}{R^2} \int \Gamma_{\rho}(\vec{r})\ e^{-i\vec{q}\vec{u}} d\vec{u},\\
+  \text{mit}\  \Gamma_{\rho}(\vec{r}) :&= \int \rho(\vec{r})\rho(\vec{u} + \vec{r}) d\vec{r}
+\end{align*}
+$\Gamma_{\rho}(\vec{r})$ ist dabei die Autokorrelationsfunktion der Elektronendichte (Patterson-Funktion).
+
+Die Elektronenverteilung kann also durch Furiertransformation aus der Autokrellationsfunktion gewonnen werden.
+
+In einem idealen zweiphasigen system würde die Autokorrelatonsfunktion einer Sägezahnfunktion entsprechen, allerdings setzen in diesem Versuch untersuchten Proben setzen sich zwar auch aus kristallinen und amorphen Bereichen zusammen, diese wiederholen sich jedoch nicht perfekt periodisch und die Übergänge zwischen ihnen sind räumlich ausgedehnt. Des weiteren sind auch die Elektronendichten in den jeweilegen Bereichen nicht konstant sondern variieren leicht. Aus diesem Grund unterscheided sich auch die reale Autokorrelationfunktion von einer Sägezahnfunktion.
+
+\begin{figure}[h]
+  \centering
+     \includegraphics[width=0.4\textwidth]{img/autokorrel.png}
+     \caption{Autokorrelationsfunktion für die Elektronendichte in PET am Beispiel einer bei 225°C kristallisierten Probe \cite{anleitung}.}
+\end{figure}
 \chapter{Durchführung}
 \section{Präparation der PET-Probe}
 
@@ -612,7 +641,7 @@ Für die uns gestellten Proben passt die erwartete $\frac{1}{\sqrt{T}}$ Abhängi
 
 \clearpage{}
 
-Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristallisationstemperatur haben wir einen Fit der Form $\Phi(T) = a \cdot e^{-\frac{B_0}{T^{\infty}_{f}-T}-\frac{T_A}{T-T_V}}$ \cite{anleitung} durch die uns zur Verfügung stehenden Messdaten gelegt. Für $T^{\infty}_{f}$ haben wir den Schmelzpunkt von $T_s = 506K$ des Materials und für $T_V$ haben wir $T_G - 50K = 293K$ angenommen. Für die Aktivierungstemperatur $T_A$ haben wir zuerst gemäß der Versuchsanleitung Werte zwischen $1000K$ und $2000K$ verwendet, da uns ein Literaturwert nicht zur Verfügung stand. Das erste Diagramm zeigt einen Fit für $T_A = 1500K$, welcher jedoch nicht die gemessenen Werte widerspiegelt. Aus diesem Grund haben wir einen weiteren Fit mit $T_A$ als zusätzlichen Fitparameter erstellt
+Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristallisationstemperatur haben wir einen Fit der Form $\Phi(T) = a \cdot e^{-\frac{B_0}{T^{\infty}_{f}-T}-\frac{T_A}{T-T_V}}$ \cite{anleitung} durch die uns zur Verfügung stehenden Messdaten gelegt. Für $T^{\infty}_{f}$ haben wir den Schmelzpunkt von $T_s = 506K$ des Materials und für $T_V$ haben wir $T_G - 50K = 293K$ angenommen. Für die Aktivierungstemperatur $T_A$ haben wir zuerst gemäß der Versuchsanleitung Werte zwischen $1000K$ und $2000K$ verwendet, da uns ein Literaturwert nicht zur Verfügung stand. Das erste Diagramm zeigt einen Fit für $T_A = 1500K$, welcher jedoch nicht die gemessenen Werte widerspiegelt. Aus diesem Grund haben wir einen weiteren Fit mit $T_A$ als zusätzlichen Fitparameter erstellt.
 
 \begin{figure}[h]
 \begin{tikzpicture}
@@ -707,12 +736,11 @@ Zur Auswertung des Kristallationsgrades der Proben in Abhängigkeit zur Kristall
 \addlegendentry{Fit-Kurve}
 \end{axis}
 \end{tikzpicture}
-\captionof{figure}{Wird $T_A$ als Fitparameter gewählt, ergibt sich mit $T_A = (251.81 \pm 51.1454)K$ eine deutliche Abdeckung mit den gemessenen Daten.}
+\captionof{figure}{Wird $T_A$ als Fitparameter gewählt, ergibt sich mit $T_A = (251,81 \pm 51,1454)K$ eine deutliche Abdeckung mit den gemessenen Daten.}
 \end{figure}
+\FloatBarrier
 
-Auch hier passt der Datenpunkt der von uns hergestellten Probe nicht zum erwarteten Wert, wobei es sinnig erscheint, dass bei einem "`verbrennen"' der Probe die Kristallinität gegenüber einer sauber geschmolzenen Probe abnimmt.
-
-Anhand des Parabel-Fits lässt sich die Temperatur, unter der maximale Kristallisierung auftritt auf etwa $T_k = 177.7$ Grad Celsius abschätzen. Auf Grund der geringen Anzahl an Datenpunkten ist diese Abschätzung aber maximal als grobe Richtlinie anzusehen.
+Auch hier passt der Datenpunkt der von uns hergestellten Probe nicht zum erwarteten Wert, wobei es sinnig erscheint, dass bei einem "`Verbrennen"' der Probe die Kristallinität gegenüber einer sauber geschmolzenen Probe abnimmt. Beispielsweise ist vorstellbar, dass die Molekülketten im Polymer aufgrund der erhöhten Temperatur vermehrt auseinanderfallen, demzufolge kürzere Ketten vorliegen, wodurch dann die Anzahl der amorphen Randbereiche gegenüber der Zahl der geordneten, parallel liegenden Ketten zunimmt. Es ist natürlich auch möglich dass das Tempern im Ofen zu kurz angedauert hat und somit die Probe zu wenig Zeit zum Kristallisieren hatte.
 
 \clearpage{}
 \subsection{Fitwerte}
@@ -722,8 +750,8 @@ Für den Fit der Kristallitdicke haben wir eine Funktion der Form $f\left(x\righ
   \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
     \hline
     Parameter & Wert    & Fehler \\ \hline
-    a         & 29.2   & 7.8   \\ \hline
-    b         & 3.3    & 0.3   \\ \hline
+    a         & 33,2   & 6,0   \\ \hline
+    b         & 3,1    & 0,2   \\ \hline
 	\end{tabular}
 \end{center}
 
@@ -732,26 +760,37 @@ Für die Langperiode wurde eine Funktion der Form $f\left(x\right)  = \frac{a}{\
   \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
     \hline
     Parameter & Wert    & Fehler \\ \hline
-    a         & 40.0   & 1.6   \\ \hline
-    b         & 5.6    & 0.3   \\ \hline
+    a         & 40,7   & 4,1   \\ \hline
+    b         & 5,6    & 0,7   \\ \hline
 	\end{tabular}
 \end{center}
 
-Zum fitten der Parabel als Modell für die Kristallinität in Abhängigkeit der Temperatur wurde $f\left(x\right)  = ax^2 + bx + c$ als Funktion verwendet
+Zum fitten der Kristallinität in Abhängigkeit der Temperatur wurde zuerst $\Phi(T) = a \cdot e^{-\frac{B_0}{506K-T}-\frac{1500K}{T-293K}}$ als Funktion verwendet. Dies liefert folgende Fit-Parameter:
 
 \begin{center}
   \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
     \hline
-    Parameter & Wert    & Fehler \\ \hline
-    a         & 0.0000  & 0.0000 \\ \hline
-    b         & 0.0049  & 0.0041 \\ \hline
-    c         & -0.3059 & 0.3579 \\ \hline
+    Parameter & Wert  & Fehler \\ \hline
+    $a$       & 21924 & 36395  \\ \hline
+    $B_0$     & 107   & 66     \\ \hline
+	\end{tabular}
+\end{center}
+
+Weiterhin haben wir die Aktivierungstemperatur $T_A$ als weiteren Fitparameter gewählt: $\Phi(T) = a \cdot e^{-\frac{B_0}{506K-T}-\frac{T_A}{T-293K}}$ als Funktion verwendet. Dies liefert folgende Fit-Parameter:
+
+\begin{center}
+  \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+    \hline
+    Parameter & Wert  & Fehler \\ \hline
+    $a  $     & 1,44  & 0,60   \\ \hline
+    $B_0$     & 23.2  & 4,0    \\ \hline
+    $T_A$     & 251,8 & 51,2   \\ \hline
 	\end{tabular}
 \end{center}
 
 \chapter{Fazit}
 
-Wir haben in diesem Versuch den Kristallisationsgrad von verschiedenen Polymerproben in Abhängigkeit der Temperaturen, bei denen das Material kristallisiert ist, untersucht. Dazu wurden aus den Streuwinkelmessungen die zugehörigen Autokorrelationsfunktionen (nach Bereinigung der Werte) ermittelt und daraus die charakteristischen Größen berechnet bzw. abgeschätzt, die es uns letztlich ermöglicht haben die Kristallinität zu berechnen. Die selbst hergestellte Probe scheint zwar aufgrund der Messwerte nicht ideal gelungen zu sein, jedoch war die Ermittlung der Kristallinität weitestgehend erfolgreich und es stellt sich auch klar eine Temperaturabhängigkeit der Kristallinität heraus. Es zeigt sich, dass die zugrundeliegende Theorie sowie die Messmethode mittels Röntgenkleinwinkelstreuung geeignet sind, das Kristallisationsverhalten der Polymerproben zu ermitteln.
+Wir haben in diesem Versuch den Kristallisationsgrad von verschiedenen Polymerproben in Abhängigkeit der Temperaturen, bei denen das Material kristallisiert ist, untersucht. Dazu wurden aus den Streuwinkelmessungen die zugehörigen Autokorrelationsfunktionen (nach Bereinigung der Werte) ermittelt und daraus die charakteristischen Größen berechnet bzw.\ abgeschätzt, die es uns letztlich ermöglicht haben die Kristallinität zu berechnen. Die selbst hergestellte Probe scheint zwar aufgrund der Messwerte nicht ideal gelungen zu sein, jedoch war die Ermittlung der Kristallinität weitestgehend erfolgreich und es stellt sich auch klar eine Temperaturabhängigkeit der Kristallinität heraus. Es zeigt sich, dass die Messmethode mittels Röntgenkleinwinkelstreuung grundsätzlich geeignet ist, das Kristallisationsverhalten der Polymerproben zu ermitteln, allerdings weicht die Auswertung der Messdaten von der Theorie ab, die zur Vorbereitung der Kristallinitätsberechnung herangezogen wurde (vgl.\ obige Abweichung der Fitparameter). 
 
 %ENDE INHALT
 \cleardoublepage{}
